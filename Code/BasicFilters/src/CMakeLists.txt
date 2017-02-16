@@ -76,7 +76,7 @@ list ( REMOVE_ITEM SimpleITKBasicFiltersGeneratedSource
                    "${CMAKE_CURRENT_BINARY_DIR}/sitkLabelStatisticsImageFilter.cxx" )
 
 # add additional files which may depend on Filters0
-list ( APPEND SimpleITKBasicFiltersSource ${SimpleITKBasicFiltersGeneratedSource} sitkAdditionalProcedures.cxx )
+list ( APPEND SimpleITKBasicFiltersSource ${SimpleITKBasicFiltersGeneratedSource} )
 
 list ( LENGTH SimpleITKBasicFiltersSource _length )
 math( EXPR _end_range "${_length} - 1 " )

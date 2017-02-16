@@ -21,56 +21,25 @@
 #include <sitkImageFileReader.h>
 #include <sitkImageFileWriter.h>
 #include <sitkHashImageFilter.h>
-#include <sitkGaussianImageSource.h>
-#include <sitkRecursiveGaussianImageFilter.h>
 #include <sitkCastImageFilter.h>
 #include <sitkPixelIDValues.h>
 #include <sitkStatisticsImageFilter.h>
 #include <sitkLabelStatisticsImageFilter.h>
 #include <sitkExtractImageFilter.h>
-#include <sitkFastMarchingBaseImageFilter.h>
-#include <sitkInverseDeconvolutionImageFilter.h>
-#include <sitkTikhonovDeconvolutionImageFilter.h>
-#include <sitkWienerDeconvolutionImageFilter.h>
-#include <sitkLandweberDeconvolutionImageFilter.h>
-#include <sitkProjectedLandweberDeconvolutionImageFilter.h>
-#include <sitkRichardsonLucyDeconvolutionImageFilter.h>
-#include <sitkScalarToRGBColormapImageFilter.h>
 #include <sitkJoinSeriesImageFilter.h>
-#include <sitkGradientAnisotropicDiffusionImageFilter.h>
-#include <sitkCurvatureAnisotropicDiffusionImageFilter.h>
 #include <sitkLabelMapContourOverlayImageFilter.h>
-#include <sitkPatchBasedDenoisingImageFilter.h>
-#include <sitkConnectedThresholdImageFilter.h>
 #include <sitkMergeLabelMapFilter.h>
-#include <sitkDiffeomorphicDemonsRegistrationFilter.h>
-#include <sitkFastSymmetricForcesDemonsRegistrationFilter.h>
-#include <sitkOtsuThresholdImageFilter.h>
 #include <sitkBSplineTransformInitializerFilter.h>
 #include <sitkCenteredTransformInitializerFilter.h>
 #include <sitkCenteredVersorTransformInitializerFilter.h>
 #include <sitkLandmarkBasedTransformInitializerFilter.h>
-#include <sitkAdditionalProcedures.h>
 #include <sitkCommand.h>
 
 #include "itkVectorImage.h"
 #include "itkVector.h"
-#include "itkRecursiveGaussianImageFilter.h"
 #include "itkExtractImageFilter.h"
-#include "itkFastMarchingImageFilterBase.h"
-#include "itkScalarToRGBColormapImageFilter.h"
-#include "itkInverseDeconvolutionImageFilter.h"
-#include "itkTikhonovDeconvolutionImageFilter.h"
-#include "itkWienerDeconvolutionImageFilter.h"
-#include "itkLandweberDeconvolutionImageFilter.h"
-#include "itkProjectedLandweberDeconvolutionImageFilter.h"
-#include "itkRichardsonLucyDeconvolutionImageFilter.h"
 #include "itkLabelMapContourOverlayImageFilter.h"
-#include "itkPatchBasedDenoisingImageFilter.h"
-#include "itkConnectedThresholdImageFilter.h"
 #include "itkMergeLabelMapFilter.h"
-#include "itkDiffeomorphicDemonsRegistrationFilter.h"
-#include "itkFastSymmetricForcesDemonsRegistrationFilter.h"
 
 #include "sitkShow.h"
 
@@ -82,60 +51,12 @@
 #include "sitkVersorTransform.h"
 #include "sitkScaleVersor3DTransform.h"
 
-TEST(BasicFilter,FastSymmetricForcesDemonsRegistrationFilter_ENUMCHECK) {
-  typedef itk::Image<float,3> ImageType;
-  typedef itk::Image<itk::Vector<float,3>,3> DisplacementType;
-  typedef itk::FastSymmetricForcesDemonsRegistrationFilter<ImageType,ImageType,DisplacementType>::DemonsRegistrationFunctionType ITKType;
-
-  EXPECT_EQ( (int)ITKType::Symmetric, (int)itk::simple::FastSymmetricForcesDemonsRegistrationFilter::Symmetric);
-  EXPECT_EQ( (int)ITKType::Fixed, (int)itk::simple::FastSymmetricForcesDemonsRegistrationFilter::Fixed);
-  EXPECT_EQ( (int)ITKType::WarpedMoving, (int)itk::simple::FastSymmetricForcesDemonsRegistrationFilter::WarpedMoving);
-  EXPECT_EQ( (int)ITKType::MappedMoving, (int)itk::simple::FastSymmetricForcesDemonsRegistrationFilter::MappedMoving);
-}
-
-
-TEST(BasicFilter,DiffeomorphicDemonsRegistrationFilter_ENUMCHECK) {
-  typedef itk::Image<float,3> ImageType;
-  typedef itk::Image<itk::Vector<float,3>,3> DisplacementType;
-  typedef itk::DiffeomorphicDemonsRegistrationFilter<ImageType,ImageType,DisplacementType>::DemonsRegistrationFunctionType ITKType;
-
-  EXPECT_EQ( (int)ITKType::Symmetric, (int)itk::simple::DiffeomorphicDemonsRegistrationFilter::Symmetric);
-  EXPECT_EQ( (int)ITKType::Fixed, (int)itk::simple::DiffeomorphicDemonsRegistrationFilter::Fixed);
-  EXPECT_EQ( (int)ITKType::WarpedMoving, (int)itk::simple::DiffeomorphicDemonsRegistrationFilter::WarpedMoving);
-  EXPECT_EQ( (int)ITKType::MappedMoving, (int)itk::simple::DiffeomorphicDemonsRegistrationFilter::MappedMoving);
-}
-
 TEST(BasicFilters,MergeLabelMap_ENUMCHECK) {
   typedef itk::MergeLabelMapFilter< itk::LabelMap< itk::LabelObject<int, 3> > >  ITKType;
   EXPECT_EQ( (int)ITKType::KEEP, (int)itk::simple::MergeLabelMapFilter::Keep);
   EXPECT_EQ( (int)ITKType::AGGREGATE, (int)itk::simple::MergeLabelMapFilter::Aggregate);
   EXPECT_EQ( (int)ITKType::PACK, (int)itk::simple::MergeLabelMapFilter::Pack);
   EXPECT_EQ( (int)ITKType::STRICT, (int)itk::simple::MergeLabelMapFilter::Strict);
-}
-
-TEST(BasicFilters,ScalarToRGBColormap_ENUMCHECK) {
-  typedef itk::ScalarToRGBColormapImageFilter< itk::Image<float,3>, itk::Image< itk::RGBPixel<float>,3> > ITKType;
-  EXPECT_EQ( (int)ITKType::Red, (int)itk::simple::ScalarToRGBColormapImageFilter::Red);
-  EXPECT_EQ( (int)ITKType::Green, (int)itk::simple::ScalarToRGBColormapImageFilter::Green);
-  EXPECT_EQ( (int)ITKType::Blue, (int)itk::simple::ScalarToRGBColormapImageFilter::Blue);
-  EXPECT_EQ( (int)ITKType::Grey, (int)itk::simple::ScalarToRGBColormapImageFilter::Grey);
-  EXPECT_EQ( (int)ITKType::Hot, (int)itk::simple::ScalarToRGBColormapImageFilter::Hot);
-  EXPECT_EQ( (int)ITKType::Cool, (int)itk::simple::ScalarToRGBColormapImageFilter::Cool);
-  EXPECT_EQ( (int)ITKType::Spring, (int)itk::simple::ScalarToRGBColormapImageFilter::Spring);
-  EXPECT_EQ( (int)ITKType::Summer, (int)itk::simple::ScalarToRGBColormapImageFilter::Summer);
-  EXPECT_EQ( (int)ITKType::Autumn, (int)itk::simple::ScalarToRGBColormapImageFilter::Autumn);
-  EXPECT_EQ( (int)ITKType::Winter, (int)itk::simple::ScalarToRGBColormapImageFilter::Winter);
-  EXPECT_EQ( (int)ITKType::Copper, (int)itk::simple::ScalarToRGBColormapImageFilter::Copper);
-  EXPECT_EQ( (int)ITKType::Jet, (int)itk::simple::ScalarToRGBColormapImageFilter::Jet);
-  EXPECT_EQ( (int)ITKType::HSV, (int)itk::simple::ScalarToRGBColormapImageFilter::HSV);
-  EXPECT_EQ( (int)ITKType::OverUnder, (int)itk::simple::ScalarToRGBColormapImageFilter::OverUnder);
-}
-
-TEST(BasicFilters,RecursiveGaussian_ENUMCHECK) {
-  typedef itk::RecursiveGaussianImageFilter< itk::Image<float,3> > ITKRecursiveGausianType;
-  EXPECT_EQ( (int)ITKRecursiveGausianType::ZeroOrder, (int)itk::simple::RecursiveGaussianImageFilter::ZeroOrder );
-  EXPECT_EQ( (int)ITKRecursiveGausianType::FirstOrder, (int)itk::simple::RecursiveGaussianImageFilter::FirstOrder );
-  EXPECT_EQ( (int)ITKRecursiveGausianType::SecondOrder, (int)itk::simple::RecursiveGaussianImageFilter::SecondOrder );
 }
 
 TEST(BasicFilters,Extract_ENUMCHECK) {
@@ -145,50 +66,6 @@ TEST(BasicFilters,Extract_ENUMCHECK) {
   EXPECT_EQ( (int)ITKExtractType::DIRECTIONCOLLAPSETOSUBMATRIX, (int)itk::simple::ExtractImageFilter::DIRECTIONCOLLAPSETOSUBMATRIX );
   EXPECT_EQ( (int)ITKExtractType::DIRECTIONCOLLAPSETOGUESS, (int)itk::simple::ExtractImageFilter::DIRECTIONCOLLAPSETOGUESS );
 }
-
-TEST(BasicFilters,FastMarching_ENUMCHECK) {
-  typedef itk::FastMarchingImageFilterBase< itk::Image<float,3>, itk::Image<float,3> > ITKType;
-  EXPECT_EQ( (int) ITKType::Nothing, (int) itk::simple::FastMarchingBaseImageFilter::Nothing );
-  EXPECT_EQ( (int) ITKType::NoHandles, (int) itk::simple::FastMarchingBaseImageFilter::NoHandles );
-  EXPECT_EQ( (int) ITKType::Strict, (int) itk::simple::FastMarchingBaseImageFilter::Strict );
-}
-
-TEST(BasicFilters,InverseDeconvolution_ENUMCHECK) {
-  typedef itk::InverseDeconvolutionImageFilter< itk::Image<float,3>, itk::Image<float,3> > ITKType;
-  EXPECT_EQ( (int) ITKType::SAME, (int) itk::simple::InverseDeconvolutionImageFilter::SAME );
-  EXPECT_EQ( (int) ITKType::VALID, (int) itk::simple::InverseDeconvolutionImageFilter::VALID );
-}
-
-TEST(BasicFilters,TikhonovDeconvolution_ENUMCHECK) {
-  typedef itk::TikhonovDeconvolutionImageFilter< itk::Image<float,3>, itk::Image<float,3> > ITKType;
-  EXPECT_EQ( (int) ITKType::SAME, (int) itk::simple::TikhonovDeconvolutionImageFilter::SAME );
-  EXPECT_EQ( (int) ITKType::VALID, (int) itk::simple::TikhonovDeconvolutionImageFilter::VALID );
-}
-
-TEST(BasicFilters,WienerDeconvolution_ENUMCHECK) {
-  typedef itk::WienerDeconvolutionImageFilter< itk::Image<float,3>, itk::Image<float,3> > ITKType;
-  EXPECT_EQ( (int) ITKType::SAME, (int) itk::simple::WienerDeconvolutionImageFilter::SAME );
-  EXPECT_EQ( (int) ITKType::VALID, (int) itk::simple::WienerDeconvolutionImageFilter::VALID );
-}
-
-TEST(BasicFilters,LandweberDeconvolution_ENUMCHECK) {
-  typedef itk::LandweberDeconvolutionImageFilter< itk::Image<float,3>, itk::Image<float,3> > ITKType;
-  EXPECT_EQ( (int) ITKType::SAME, (int) itk::simple::LandweberDeconvolutionImageFilter::SAME );
-  EXPECT_EQ( (int) ITKType::VALID, (int) itk::simple::LandweberDeconvolutionImageFilter::VALID );
-}
-
-TEST(BasicFilters,ProjectedLandweberDeconvolution_ENUMCHECK) {
-  typedef itk::ProjectedLandweberDeconvolutionImageFilter< itk::Image<float,3>, itk::Image<float,3> > ITKType;
-  EXPECT_EQ( (int) ITKType::SAME, (int) itk::simple::ProjectedLandweberDeconvolutionImageFilter::SAME );
-  EXPECT_EQ( (int) ITKType::VALID, (int) itk::simple::ProjectedLandweberDeconvolutionImageFilter::VALID );
-}
-
-TEST(BasicFilters,RichardsonLucyDeconvolution_ENUMCHECK) {
-  typedef itk::RichardsonLucyDeconvolutionImageFilter< itk::Image<float,3>, itk::Image<float,3> > ITKType;
-  EXPECT_EQ( (int) ITKType::SAME, (int) itk::simple::RichardsonLucyDeconvolutionImageFilter::SAME );
-  EXPECT_EQ( (int) ITKType::VALID, (int) itk::simple::RichardsonLucyDeconvolutionImageFilter::VALID );
-}
-
 TEST(BasicFilters,LabelMapContourOverlay_ENUMCHECK) {
   typedef itk::LabelMapContourOverlayImageFilter< itk::LabelMap<itk::LabelObject<int,3> >, itk::Image<float,3>, itk::VectorImage<int,3> > ITKType;
   EXPECT_EQ( (int) ITKType::PLAIN, (int)         itk::simple::LabelMapContourOverlayImageFilter::PLAIN );
@@ -201,97 +78,6 @@ TEST(BasicFilters,LabelMapContourOverlay_ENUMCHECK) {
 
 }
 
-TEST(BasicFilters,PatchBasedBaseDenoising_ENUMCHECK) {
-  typedef itk::PatchBasedDenoisingImageFilter< itk::Image<float,3>, itk::Image<float,3> > ITKType;
-  EXPECT_EQ( (int) ITKType::NOMODEL, (int) itk::simple::PatchBasedDenoisingImageFilter::NOMODEL );
-  EXPECT_EQ( (int) ITKType::GAUSSIAN, (int) itk::simple::PatchBasedDenoisingImageFilter::GAUSSIAN );
-  EXPECT_EQ( (int) ITKType::RICIAN, (int) itk::simple::PatchBasedDenoisingImageFilter::RICIAN );
-  EXPECT_EQ( (int) ITKType::POISSON, (int) itk::simple::PatchBasedDenoisingImageFilter::POISSON );
-}
-
-
-TEST(BasicFilters,ConnectedThreshold_ENUMCHECK) {
-  typedef itk::ConnectedThresholdImageFilter< itk::Image<float,3>, itk::Image<float,3> > ITKType;
-  EXPECT_EQ( (int) ITKType::FaceConnectivity, (int) itk::simple::ConnectedThresholdImageFilter::FaceConnectivity );
-  EXPECT_EQ( (int) ITKType::FullConnectivity, (int) itk::simple::ConnectedThresholdImageFilter::FullConnectivity );
-}
-
-TEST(BasicFilter,GradientAnisotropicDiffusion_EstimateOptimalTimeStep) {
-  // This test is to check the correctness of the
-  // EstimateOptimalTimeStep
-
-  namespace sitk = itk::simple;
-
-  sitk::Image img;
-  ASSERT_NO_THROW( img = sitk::ReadImage( dataFinder.GetFile ( "Input/RA-Float.nrrd" ) ) ) << "Reading input Image.";
-
-  std::vector<double> spacing( 3, 1.0 );
-
-  img.SetSpacing( spacing );
-  sitk::GradientAnisotropicDiffusionImageFilter filter;
-
-  filter.SetTimeStep( 0 );
-
-  EXPECT_EQ( filter.EstimateOptimalTimeStep( img ), 0.125 );
-  EXPECT_EQ( filter.GetTimeStep(), 0.125 );
-
-  spacing[0] = 2.0;
-  spacing[1] = 2.0;
-  spacing[2] = 10.0;
-  img.SetSpacing( spacing );
-
-  EXPECT_EQ( filter.EstimateOptimalTimeStep( img ), 0.25 );
-  EXPECT_EQ( filter.GetTimeStep(), 0.25 );
-
-  img = sitk::Image( 100, 100, sitk::sitkUInt32 );
-
-  spacing[0] = 10.0;
-  spacing[1] = 100.0;
-  img.SetSpacing( spacing );
-
-  EXPECT_EQ( filter.EstimateOptimalTimeStep( img ), 2.5 );
-  EXPECT_EQ( filter.GetTimeStep(), 2.5 );
-
-}
-
-
-TEST(BasicFilter,CurvatureAnisotropicDiffusion_EstimateOptimalTimeStep) {
-  // This test is to check the correctness of the
-  // EstimateOptimalTimeStep
-
-  namespace sitk = itk::simple;
-
-  sitk::Image img;
-  ASSERT_NO_THROW( img = sitk::ReadImage( dataFinder.GetFile ( "Input/RA-Float.nrrd" ) ) ) << "Reading input Image.";
-
-  std::vector<double> spacing( 3, 1.0 );
-  img.SetSpacing( spacing );
-
-  sitk::CurvatureAnisotropicDiffusionImageFilter filter;
-
-  filter.SetTimeStep( 0 );
-
-  EXPECT_EQ( filter.EstimateOptimalTimeStep( img ), 0.0625 );
-  EXPECT_EQ( filter.GetTimeStep(), 0.0625 );
-
-  spacing[0] = 2.0;
-  spacing[1] = 2.0;
-  spacing[2] = 10.0;
-  img.SetSpacing( spacing );
-
-  EXPECT_EQ( filter.EstimateOptimalTimeStep( img ), 0.125 );
-  EXPECT_EQ( filter.GetTimeStep(), 0.125 );
-
-  img = sitk::Image( 100, 100, sitk::sitkUInt32 );
-
-  spacing[0] = 10.0;
-  spacing[1] = 100.0;
-  img.SetSpacing( spacing );
-
-  EXPECT_EQ( filter.EstimateOptimalTimeStep( img ), 1.25 );
-  EXPECT_EQ( filter.GetTimeStep(), 1.25 );
-
-}
 
 TEST(BasicFilters,ImageFilter) {
   namespace sitk = itk::simple;
@@ -462,321 +248,6 @@ TEST(BasicFilters,HashImageFilter) {
   EXPECT_EQ ( itk::simple::HashImageFilter::MD5, hasher.SetHashFunction ( itk::simple::HashImageFilter::MD5 ).GetHashFunction() );
 }
 
-
-TEST(BasicFilters,BSplineTransformInitializer) {
-  namespace sitk = itk::simple;
-
-  sitk::BSplineTransformInitializerFilter filter;
-
-  EXPECT_EQ ( "BSplineTransformInitializerFilter", filter.GetName() );
-  EXPECT_EQ ( std::vector<uint32_t>(3,1u), filter.GetTransformDomainMeshSize() );
-  EXPECT_EQ ( std::vector<uint32_t>(3,10u), filter.SetTransformDomainMeshSize(std::vector<uint32_t>(3,10u)).GetTransformDomainMeshSize() );
-
-  const double cs = 0.5*itk::Math::sqrt2; // cos(pi/4) = sin(pi/4)
-  sitk::Image img( 100, 100, sitk::sitkUInt32 );
-  img.SetDirection(v4(cs,-cs,cs,cs) );
-  img.SetSpacing( v2(2,2) );
-
-
-  sitk::BSplineTransform outTx = filter.Execute( img );
-  EXPECT_EQ ( std::vector<uint32_t>(2,10u), outTx.GetTransformDomainMeshSize() );
-  EXPECT_VECTOR_DOUBLE_NEAR ( v4(cs,-cs,cs,cs), outTx.GetTransformDomainDirection(), 1e-6 );
-   EXPECT_VECTOR_DOUBLE_NEAR ( v2(0, -1.7677669525146484 ), outTx.GetTransformDomainOrigin(), 1e-6 );
-  EXPECT_VECTOR_DOUBLE_NEAR ( v2(10.025, 20.05), outTx.GetTransformDomainPhysicalDimensions(), 1e6);
-  EXPECT_EQ ( 10u, outTx.GetFixedParameters().size() );
-
-  // 3D
-  img = sitk::Image(10,10,10,  sitk::sitkUInt32 );
-
-  outTx = sitk::BSplineTransformInitializer( img, std::vector<uint32_t>(3,5u) );
-  EXPECT_EQ( std::vector<uint32_t>(3,5u), outTx.GetTransformDomainMeshSize() );
-
-  // check that it's identity
-  EXPECT_VECTOR_DOUBLE_NEAR( outTx.TransformPoint( v3(0.0,0.0,0.0) ), v3(0.0,0.0,0.0), 1e-17);
-  EXPECT_VECTOR_DOUBLE_NEAR( outTx.TransformPoint( v3(1.123,0.0,2.0) ), v3(1.123,0.0,2.0), 1e-17);
-  EXPECT_VECTOR_DOUBLE_NEAR( outTx.TransformPoint( v3(0.0,0.0,5.0) ), v3(0.0,0.0,5.0), 1e-17);
-  EXPECT_VECTOR_DOUBLE_NEAR( outTx.TransformPoint( v3(5.0,7.0,9.0) ), v3(5.0,7.0,9.0), 1e-17);
-
-}
-
-TEST(BasicFilters, BSplineTransformInitializerRequestedRegion) {
-  namespace sitk = itk::simple;
-
-  //check that changing the image's requested region does not change
-  //the BSplineTransformInitializer
-  sitk::Image img( 482, 360, 141, sitk::sitkFloat32 );
-  img.SetSpacing( v3(0.97656, 0.97656, 2) );
-  std::vector<unsigned int> extractSize(3);
-  extractSize[0] = 482;
-  extractSize[1] = 0;
-  extractSize[2] = 141;
-  std::vector<int> extractIndex(3);
-  extractIndex[0] = 0;
-  extractIndex[1] = 176;
-  extractIndex[2] = 0;
-
-  std::vector<uint32_t> transformDomainMeshSize(3);
-  transformDomainMeshSize[0] = 9;
-  transformDomainMeshSize[1] = 7;
-  transformDomainMeshSize[2] = 6;
-  sitk::BSplineTransform transformBefore(3), transformAfter(3);
-  transformBefore = sitk::BSplineTransformInitializer( img, transformDomainMeshSize );
-
-  sitk::Extract(img, extractSize, extractIndex);
-
-  transformAfter = sitk::BSplineTransformInitializer( img, transformDomainMeshSize );
-
-  //the extract filter should not have any effect on the
-  //BSplineTransformInitializer, it only changed the image's
-  //requested region
-  EXPECT_VECTOR_DOUBLE_NEAR( transformBefore.GetTransformDomainPhysicalDimensions(), transformAfter.GetTransformDomainPhysicalDimensions(), 1e-17 );
-  EXPECT_VECTOR_DOUBLE_NEAR( transformBefore.GetTransformDomainOrigin(), transformAfter.GetTransformDomainOrigin(), 1e-17 );
-
-}
-
-TEST(BasicFilters,CenteredTransformInitializer) {
-  namespace sitk = itk::simple;
-
-  sitk::CenteredTransformInitializerFilter filter;
-
-  EXPECT_EQ ( "CenteredTransformInitializerFilter", filter.GetName() );
-  EXPECT_EQ ( sitk::CenteredTransformInitializerFilter::MOMENTS, filter.GetOperationMode() );
-  filter.GeometryOn();
-  EXPECT_EQ ( sitk::CenteredTransformInitializerFilter::GEOMETRY, filter.GetOperationMode() );
-  filter.MomentsOn();
-  EXPECT_EQ ( sitk::CenteredTransformInitializerFilter::MOMENTS, filter.GetOperationMode() );
-
-  sitk::Image fixed = sitk::ReadImage( dataFinder.GetFile( "Input/BrainProtonDensitySliceBorder20.png") );
-  sitk::Image moving = sitk::ReadImage( dataFinder.GetFile( "Input/BrainProtonDensitySliceShifted13x17y.png" ) );
-
-  sitk::Transform tx = sitk::Transform(2, sitk::sitkAffine);
-
-  sitk::Transform outTx = filter.Execute( fixed, moving , tx );
-
-  std::vector<double> params = outTx.GetFixedParameters();
-
-  ASSERT_EQ( 2u, params.size() );
-  EXPECT_EQ( 0.0, tx.GetFixedParameters()[0] );
-  EXPECT_EQ( 0.0, tx.GetFixedParameters()[1] );
-  EXPECT_FLOAT_EQ ( 111.20356, params[0] );
-  EXPECT_FLOAT_EQ ( 131.59097, params[1] );
-
-
-  tx = sitk::Transform(2, sitk::sitkEuler);
-
-  outTx = sitk::CenteredTransformInitializer( fixed, moving, tx );
-
-  params = outTx.GetFixedParameters();
-
-  ASSERT_EQ( 2u, params.size() );
-  EXPECT_EQ( 0.0, tx.GetFixedParameters()[0] );
-  EXPECT_EQ( 0.0, tx.GetFixedParameters()[1] );
-  EXPECT_FLOAT_EQ ( 111.20356, params[0] );
-  EXPECT_FLOAT_EQ ( 131.59097, params[1] );
-
-}
-
-
-TEST(BasicFilters,CenteredVersorTransformInitializer) {
-  namespace sitk = itk::simple;
-
-  sitk::CenteredVersorTransformInitializerFilter filter;
-
-  EXPECT_EQ ( "CenteredVersorTransformInitializerFilter", filter.GetName() );
-  EXPECT_EQ ( filter.GetComputeRotation(), false );
-  EXPECT_EQ ( filter.ComputeRotationOn().GetComputeRotation(), true );
-  EXPECT_EQ ( filter.ComputeRotationOff().GetComputeRotation(), false );
-
-  // generate a few basic test images from gaussian blobs
-
-  sitk::GaussianImageSource source;
-  source.SetOutputPixelType( sitk::sitkFloat32 );
-  source.SetSize( std::vector< unsigned int >(3, 128) );
-  source.SetMean( v3(64.0, 64.0, 64.0) );
-  source.SetSigma( v3( 10.0, 15.0, 20.0) );
-
-  const sitk::Image g1 = source.Execute();
-
-  source.SetMean( v3(63.0, 62.0, 61.0) );
-  const sitk::Image g2 = source.Execute();
-
-  source.SetMean( v3(63.0, 62.0, 61.0) );
-  source.SetSigma( v3( 15.0, 20.0, 10) );
-  const sitk::Image g3 = source.Execute();
-
-  {
-  sitk::VersorRigid3DTransform tx;
-
-  filter.ComputeRotationOff();
-  tx = sitk::VersorRigid3DTransform( filter.Execute(g1, g2, sitk::VersorRigid3DTransform() ) );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetTranslation(), v3(-1.0,-2.0,-3.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetCenter(), v3(64.0,64.0,64.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetVersor(), v4(0.0, 0.0,0.0,1.0), 1e-15 );
-  tx = sitk::VersorRigid3DTransform( filter.Execute(g1, g3, sitk::VersorRigid3DTransform() ) );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetTranslation(), v3(-1.0,-2.0,-3.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetCenter(), v3(64.0,64.0,64.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetVersor(), v4(0.0, 0.0,0.0,1.0), 1e-15 );
-
-  filter.ComputeRotationOn();
-  tx = sitk::VersorRigid3DTransform( filter.Execute(g1, g2, sitk::VersorRigid3DTransform() ) );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetTranslation(), v3(-1.0,-2.0,-3.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetCenter(), v3(64.0,64.0,64.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetVersor(), v4(0.0, 0.0,0.0,1.0), 1e-5 );
-  tx = sitk::VersorRigid3DTransform( filter.Execute(g1, g3, sitk::VersorRigid3DTransform() ) );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetTranslation(), v3(-1.0,-2.0,-3.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetCenter(), v3(64.0,64.0,64.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetVersor(), v4(-0.5, -0.5,0.5,0.5), 1e-5 );
-  }
-
-  {
-  sitk::Similarity3DTransform tx;
-
-  filter.ComputeRotationOff();
-  tx = sitk::Similarity3DTransform( filter.Execute(g1, g2, sitk::Similarity3DTransform() ) );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetTranslation(), v3(-1.0,-2.0,-3.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetCenter(), v3(64.0,64.0,64.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetVersor(), v4(0.0, 0.0,0.0,1.0), 1e-15 );
-  tx = sitk::Similarity3DTransform( filter.Execute(g1, g3, sitk::Similarity3DTransform() ) );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetTranslation(), v3(-1.0,-2.0,-3.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetCenter(), v3(64.0,64.0,64.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetVersor(), v4(0.0, 0.0,0.0,1.0), 1e-15 );
-
-  filter.ComputeRotationOn();
-  tx = sitk::Similarity3DTransform( filter.Execute(g1, g2, sitk::Similarity3DTransform() ) );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetTranslation(), v3(-1.0,-2.0,-3.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetCenter(), v3(64.0,64.0,64.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetVersor(), v4(0.0, 0.0,0.0,1.0), 1e-5 );
-  tx = sitk::Similarity3DTransform( filter.Execute(g1, g3, sitk::Similarity3DTransform() ) );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetTranslation(), v3(-1.0,-2.0,-3.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetCenter(), v3(64.0,64.0,64.0), 0.1 );
-  EXPECT_VECTOR_DOUBLE_NEAR( tx.GetVersor(), v4(-0.5, -0.5,0.5,0.5), 1e-5 );
-  }
-
-  EXPECT_THROW( sitk::CenteredVersorTransformInitializer(g1, g2, sitk::Transform(2,sitk::sitkSimilarity)), sitk::GenericException );
-  EXPECT_THROW( sitk::CenteredVersorTransformInitializer(g1, g2, sitk::Transform(3,sitk::sitkVersor)), sitk::GenericException );
-  EXPECT_THROW( sitk::CenteredVersorTransformInitializer(g1, g2, sitk::Transform(3,sitk::sitkAffine)), sitk::GenericException );
-  EXPECT_THROW( sitk::CenteredVersorTransformInitializer(g1, g2, sitk::Transform(3,sitk::sitkQuaternionRigid)), sitk::GenericException );
-  EXPECT_THROW( sitk::CenteredVersorTransformInitializer(g1, g2, sitk::Transform(3,sitk::sitkTranslation)), sitk::GenericException );
-
-
-}
-
-
-
-TEST(BasicFilters,LandmarkBasedTransformInitializer) {
-  namespace sitk = itk::simple;
-
-  sitk::LandmarkBasedTransformInitializerFilter filter;
-
-
-  const double points2d[] = { 0.0,0.0, 1.0,1.0, 1.0,0.0, 1.1,1.0,  2.34, 10.98};
-
-  std::vector<double> fixedPoints(&points2d[0], &points2d[10]);
-  std::vector<double> movingPoints(&points2d[0], &points2d[10]);
-
-
-  sitk::Transform out;
-
-  filter.SetFixedLandmarks( fixedPoints );
-  filter.SetMovingLandmarks( movingPoints );
-
-
-  EXPECT_EQ ( "LandmarkBasedTransformInitializerFilter", filter.GetName() );
-
-  out = filter.Execute( sitk::Euler2DTransform() );
-  EXPECT_VECTOR_DOUBLE_NEAR(v3(0.0, 0.0, 0.0), out.GetParameters(), 1e-25);
-
-  out = filter.Execute( sitk::Similarity2DTransform() );
-  EXPECT_VECTOR_DOUBLE_NEAR(v4(1.0, 0.0, 0.0, 0.0), out.GetParameters(), 1e-25);
-
-
-  EXPECT_ANY_THROW( filter.Execute( sitk::VersorTransform() ) );
-
-  out = filter.Execute( sitk::VersorRigid3DTransform() );
-  EXPECT_VECTOR_DOUBLE_NEAR(v6(0.0, 0.0, 0.0, 0.0, 0.0, 0.0), out.GetParameters(), 1e-25);
-
-  out = filter.Execute( sitk::ScaleVersor3DTransform() );
-  EXPECT_VECTOR_DOUBLE_NEAR(v9(0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0), out.GetParameters(), 1e-25);
-
-
-  out = filter.Execute( sitk::AffineTransform(2) );
-  EXPECT_VECTOR_DOUBLE_NEAR(v6(1.0, 0.0, 0.0, 1.0, 0.0, 0.0), out.GetParameters(), 1e-8);
-
-  const double fixedImagePoints3d[] = {127.53915086334257, 102.12639903012848, 44.0,
-                                       198.641578144495, 101.59971438360141, 44.0,
-                                       156.82957119036902, 215.70110997158648, 48.0,
-                                       176.63477775277258, 144.97363079485118, 64.0};
-
-  const double movingImagePoints3d[] = {181.40169895047495, 242.55513079230616, 24.0,
-                                        112.90638157274341, 246.938831104481, 24.0,
-                                        141.07588005861425, 134.62809649982117, 28.0,
-                                        126.66162032855607, 208.7334122120106, 44.0};
-  fixedPoints.clear();
-  fixedPoints.insert(fixedPoints.begin(), &fixedImagePoints3d[0], &fixedImagePoints3d[12]);
-  movingPoints.clear();
-  movingPoints.insert(movingPoints.begin(), &movingImagePoints3d[0], &movingImagePoints3d[12]);
-  filter.SetFixedLandmarks( fixedPoints );
-  filter.SetMovingLandmarks( movingPoints );
-
-  out = filter.Execute( sitk::AffineTransform(3) );
-
-  EXPECT_VECTOR_DOUBLE_NEAR(v12(-9.64081213e-01, -1.01003445e-01, -1.54009453e-01,
-                                5.44421946e-02, -9.73501195e-01, 2.60861955e-01,
-                                -2.64945988e-14, -3.95920761e-14, 1.00000000e+00,
-                                321.45133233, 323.55386506, -20.0), out.GetParameters(), 1e-8);
-
-  const double pointsBSplineTest2D[] = {0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.1, 1.0, 2.34, 10.98};
-  fixedPoints.clear();
-  fixedPoints.insert(fixedPoints.begin(), &pointsBSplineTest2D[0], &pointsBSplineTest2D[10]);
-  movingPoints.clear();
-  movingPoints.insert(movingPoints.begin(), &pointsBSplineTest2D[0], &pointsBSplineTest2D[10]);
-  filter.SetFixedLandmarks( fixedPoints );
-  filter.SetMovingLandmarks( movingPoints );
-  filter.SetBSplineNumberOfControlPoints( 5 );
-
-  // Image isn't set so we expect an exception
-  EXPECT_ANY_THROW( filter.Execute( sitk::BSplineTransform( 2 ) ) );
-
-  std::vector< double > spacing;
-  spacing.push_back(0.5);
-  spacing.push_back(1);
-  std::vector< double > origin;
-  origin.push_back(-5.0);
-  origin.push_back(-5.0);
-  sitk::Image referenceImage( 25, 50, sitk::sitkFloat32 );
-  referenceImage.SetSpacing( spacing );
-  referenceImage.SetOrigin( origin );
-  filter.SetReferenceImage( referenceImage );
-
-  // Expecting the identity transform (BSpline parameters are all zero)
-  out = filter.Execute(sitk::BSplineTransform(2));
-  EXPECT_VECTOR_DOUBLE_NEAR(std::vector<double>(out.GetParameters().size(), 0.0), out.GetParameters(), 1e-25);
-
-  // Translate the moving points in the x direction
-  double dxSize = 3.5;
-  for( unsigned int i = 0; i<movingPoints.size(); i+=2 )
-    {
-    movingPoints[i]+=dxSize;
-    }
-  filter.SetMovingLandmarks( movingPoints );
-
-  out = filter.Execute( sitk::BSplineTransform(2) );
-
-  // Transform the fixed points using the estimated BSpline transform
-  // and compare the to moving points.
-  for( unsigned int i = 0; i<fixedPoints.size(); i+=2 )
-    {
-    EXPECT_VECTOR_DOUBLE_NEAR( out.TransformPoint(v2(fixedPoints[i], fixedPoints[i+1])), v2(movingPoints[i], movingPoints[i+1]), 0.1 );
-    }
-
-  // The ITK filter only supports BSplines of order 3. Unfortunately,
-  // because the transform is templated we don't have a way for
-  // obtaining the spline order so we just check that ITK throws the
-  // expected exception when we use a spline order of 2.
-  EXPECT_ANY_THROW( filter.Execute( sitk::BSplineTransform( 2, 2 ) ) );
-}
-
-
 TEST(BasicFilters,Cast_Commands) {
   // test cast filter with a bunch of commands
 
@@ -863,52 +334,4 @@ TEST(BasicFilters,Statistics_Abort) {
   EXPECT_EQ ( 1, startCmd.m_Count );
   EXPECT_EQ ( 0, userCmd.m_Count );
 
-}
-
-TEST(BasicFilters,ResampleImageFilter_AdditionalProcedures)
-{
-  namespace sitk = itk::simple;
-
-  sitk::Image img;
-  ASSERT_NO_THROW( img = sitk::ReadImage( dataFinder.GetFile ( "Input/RA-Float.nrrd" ) ) ) << "Reading input Image.";
-
-  sitk::Transform xf = sitk::Transform(); // identity transform
-
-  // self reference image
-   sitk::Image out = sitk::Resample( img,
-                                     xf,
-                                     sitk::sitkNearestNeighbor );
-  EXPECT_EQ( "b187541bdcc89843d0a25a3761f344c358f3518a", sitk::Hash( out )) << " Procedural Interface 1 identity transform.";
-
-  // additional parameter reference image
-   out = sitk::Resample( img,
-                         img,
-                         xf,
-                         sitk::sitkNearestNeighbor );
-  EXPECT_EQ( "b187541bdcc89843d0a25a3761f344c358f3518a", sitk::Hash( out )) << " Procedural Interface 2 identity transform.";
-
-  // manual specification of output domain
- out = sitk::Resample( img,
-                       img.GetSize(),
-                       xf,
-                       sitk::sitkNearestNeighbor,
-                       img.GetOrigin(),
-                       img.GetSpacing(),
-                       img.GetDirection() );
-  EXPECT_EQ( "b187541bdcc89843d0a25a3761f344c358f3518a", sitk::Hash( out )) << " Procedural Interface 3 identity transform.";
-}
-
-
-TEST(BasicFilters,OtsuThreshold_CheckNamesInputCompatibility)
-{
-  namespace sitk = itk::simple;
-
-  sitk::Image input(10,10,sitk::sitkFloat32);
-  sitk::Image mask1(10,10,10,sitk::sitkUInt8);
-  sitk::Image mask2(11,10,sitk::sitkUInt8);
-
-  // check that if the dimension or size does not match an exception
-  // is thrown.
-  EXPECT_THROW( sitk::OtsuThreshold(input, mask1), sitk::GenericException );
-  EXPECT_THROW( sitk::OtsuThreshold(input, mask2), sitk::GenericException );
 }

@@ -2,7 +2,6 @@
 #include "sitkCastImageFilter.h"
 #include "sitkSimpleElastix.h"
 #include "sitkImageFileWriter.h"
-#include "sitkBinaryThresholdImageFilter.h"
   
 #include <fstream>
 

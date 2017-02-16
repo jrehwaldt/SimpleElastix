@@ -70,8 +70,6 @@
 #include "sitkLandmarkBasedTransformInitializerFilter.h"
 #include "sitkCastImageFilter.h"
 
-#include "sitkAdditionalProcedures.h"
-
 #include "sitkSimpleElastix.h"
 #include "sitkSimpleTransformix.h"
 

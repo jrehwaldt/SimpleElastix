@@ -199,7 +199,6 @@ namespace std
 %include "sitkCenteredVersorTransformInitializerFilter.h"
 %include "sitkLandmarkBasedTransformInitializerFilter.h"
 %include "sitkCastImageFilter.h"
-%include "sitkAdditionalProcedures.h"
 
 // SimpleElastix
 %template( ParameterMap ) std::map< std::string, std::vector< std::string > >;

@@ -7,29 +7,23 @@ find_package( GTest REQUIRED )
 set ( SimpleITKUnitTestSourceBase
   SimpleITKTestHarness.cxx
   sitkImageCompare.cxx
-  sitkTransformCompare.cxx
 )
 add_library ( SimpleITKUnitTestBase STATIC ${SimpleITKUnitTestSourceBase} )
 add_dependencies( SimpleITKUnitTestBase BasicFiltersSourceCode  )
 target_link_libraries( SimpleITKUnitTestBase ${GTEST_LIBRARIES} ${SimpleITK_LIBRARIES} ${ITK_LIBRARIES} )
 
-add_executable( sitkTransformCompareDriver sitkTransformCompareDriver.cxx )
-target_link_libraries( sitkTransformCompareDriver ${GTEST_LIBRARIES} SimpleITKUnitTestBase ${SimpleITK_LIBRARIES} )
 # Find tests generated in the binary directory
 # To add a new file, just add it to this list.  Any GoogleTests inside will be automatically
 # added to ctest.
 set ( SimpleITKUnitTestSource
   sitkImageTests.cxx
   sitkCommonTests.cxx
-  sitkImageRegistrationMethodTests.cxx
   sitkImageIOTests.cxx
   sitkTypeListsTests.cxx
   sitkBasicFiltersTests.cxx
   sitkLabelStatisticsTest.cxx
-  sitkTransformToDisplacementFieldFilterTest.cxx
   sitkOperatorTests.cxx
   sitkExceptionsTests.cxx
-  sitkTransformTests.cxx
   sitkImportImageTest.cxx
   itkHashImageFilterTest.cxx
   itkSliceImageFilterTest.cxx
@@ -263,14 +257,4 @@ add_test( NAME sitkSystemInformaionTest COMMAND sitkSystemInformationTest ${CMAK
 
 
 gtest_add_tests(SimpleITKUnitTestDriver0 ${SimpleITKUnitTestSource})
-
-
-#######################################################
-#
-# Tests which use the itkTestDriver
-#
-#######################################################
-
-
-include(${CMAKE_CURRENT_SOURCE_DIR}/AdditionalTests.cmake)
 
