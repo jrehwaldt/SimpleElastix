@@ -301,6 +301,8 @@ TEST( ElastixFilterTest, BSpline3D )
   EXPECT_NO_THROW( transformParameterObject = elastixFilter->GetTransformParameterObject() );
 }
 
+#ifdef SITK_4D_IMAGES
+
 TEST( ElastixFilterTest, BSpline4D )
 {
   typedef itk::Image< float, 4 > ImageType;
@@ -336,3 +338,5 @@ TEST( ElastixFilterTest, BSpline4D )
   ParameterObject::Pointer transformParameterObject;
   EXPECT_NO_THROW( transformParameterObject = elastixFilter->GetTransformParameterObject() );
 }
+
+#endif

@@ -103,7 +103,7 @@ option(BUILD_SHARED_LIBS "Build SimpleITK ITK with shared libraries. This does n
 # as this option does not robustly work across platforms it will be marked as advanced
 mark_as_advanced( FORCE BUILD_SHARED_LIBS )
 
-option( SITK_4D_IMAGES "Add Image and I/O support for four spatial dimensions." ON )
+option( SITK_4D_IMAGES "Add Image and I/O support for four spatial dimensions." OFF )
 mark_as_advanced( SITK_4D_IMAGES )
 
 #-----------------------------------------------------------------------------

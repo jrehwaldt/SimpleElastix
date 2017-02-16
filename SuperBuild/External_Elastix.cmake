@@ -48,13 +48,13 @@ ExternalProject_Add( ${proj}
   -DUSE_AdvancedMeanSquaresMetric:BOOL=ON                                           
   -DUSE_AdvancedNormalizedCorrelationMetric:BOOL=ON                                           
   -DUSE_AffineDTITransformElastix:BOOL=ON
-  -DUSE_AffineLogStackTransform:BOOL=ON
+  -DUSE_AffineLogStackTransform:BOOL=${SITK_4D_IMAGES}  
   -DUSE_AffineLogTransformElastix=ON                                        
   -DUSE_BSplineInterpolator:BOOL=ON                                           
   -DUSE_BSplineInterpolatorFloat:BOOL=ON                                           
   -DUSE_BSplineResampleInterpolator:BOOL=ON                                           
   -DUSE_BSplineResampleInterpolatorFloat:BOOL=ON                                           
-  -DUSE_BSplineStackTransform:BOOL=ON                                           
+  -DUSE_BSplineStackTransform:BOOL=${SITK_4D_IMAGES}                                              
   -DUSE_BSplineTransformWithDiffusion:BOOL=OFF                                           
   -DUSE_CMAEvolutionStrategy:BOOL=OFF                                           
   -DUSE_CUDAResampler:BOOL=OFF                                          
@@ -66,9 +66,9 @@ ExternalProject_Add( ${proj}
   -DUSE_DistancePreservingRigidityPenalty:BOOL=OFF                                           
   -DUSE_EulerTransformElastix:BOOL=ON                                           
   -DUSE_FiniteDifferenceGradientDescent:BOOL=OFF                                           
-  -DUSE_FixedGenericPyramid:BOOL=ON                                          
-  -DUSE_FixedRecursivePyramid:BOOL=ON                                           
-  -DUSE_FixedShrinkingPyramid:BOOL=ON                                           
+  -DUSE_FixedGenericPyramid:BOOL=OFF                                       
+  -DUSE_FixedRecursivePyramid:BOOL=OFF                                         
+  -DUSE_FixedShrinkingPyramid:BOOL=OFF                                           
   -DUSE_FixedSmoothingPyramid:BOOL=ON                                           
   -DUSE_FullSampler:BOOL=OFF                                           
   -DUSE_FullSearch:BOOL=OFF                                           
@@ -78,9 +78,9 @@ ExternalProject_Add( ${proj}
   -DUSE_LinearInterpolator:BOOL=ON                                           
   -DUSE_LinearResampleInterpolator:BOOL=ON                                           
   -DUSE_MissingStructurePenalty:BOOL=OFF
-  -DUSE_MovingGenericPyramid:BOOL=ON   
-  -DUSE_MovingRecursivePyramid:BOOL=ON                                           
-  -DUSE_MovingShrinkingPyramid:BOOL=ON                                           
+  -DUSE_MovingGenericPyramid:BOOL=OFF   
+  -DUSE_MovingRecursivePyramid:BOOL=OFF                                           
+  -DUSE_MovingShrinkingPyramid:BOOL=OFF                                          
   -DUSE_MovingSmoothingPyramid:BOOL=ON                                           
   -DUSE_MultiBSplineTransformWithNormal:BOOL=OFF                                           
   -DUSE_MultiInputRandomCoordinateSampler:BOOL=ON                                           
@@ -93,8 +93,8 @@ ExternalProject_Add( ${proj}
   -DUSE_NearestNeighborResampleInterpolator:BOOL=ON                                           
   -DUSE_NormalizedGradientCorrelationMetric:BOOL=ON                                           
   -DUSE_NormalizedMutualInformationMetric:BOOL=ON
-  -DUSE_PCAMetric:BOOL=ON
-  -DUSE_PCAMetric2:BOOL=ON                                   
+  -DUSE_PCAMetric:BOOL=${SITK_4D_IMAGES}   
+  -DUSE_PCAMetric2:BOOL=${SITK_4D_IMAGES}                                      
   -DUSE_PatternIntensityMetric:BOOL=OFF                                           
   -DUSE_PolydataDummyPenalty:BOOL=OFF                                           
   -DUSE_Powell:BOOL=OFF
@@ -112,12 +112,12 @@ ExternalProject_Add( ${proj}
   -DUSE_Simplex:BOOL=OFF                                           
   -DUSE_SimultaneousPerturbation:BOOL=OFF                                           
   -DUSE_SplineKernelTransform:BOOL=ON                                           
-  -DUSE_StandardGradientDescent:BOOL=ON                                           
+  -DUSE_StandardGradientDescent:BOOL=OFF                                           
   -DUSE_StatisticalShapePenalty:BOOL=OFF                                           
   -DUSE_TransformBendingEnergyPenanalty:BOOL=ON
   -DUSE_TransformRigidityPenalty:BOOL=ON                                           
   -DUSE_TranslationTransformElastix:BOOL=ON                                           
-  -DUSE_VarianceOverLastDimensionMetric:BOOL=ON                                           
+  -DUSE_VarianceOverLastDimensionMetric:BOOL=${SITK_4D_IMAGES}                                           
   -DUSE_ViolaWellsMutualInformationMetric:BOOL=OFF                                           
   -DUSE_WeightedCombinationTransformElastix:BOOL=ON
   DEPENDS ${${CMAKE_PROJECT_NAME}_DEPENDENCIES}
