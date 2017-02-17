@@ -46,10 +46,6 @@ set ( SimpleITKBasicFilters1Source
   sitkCastImageFilter-3v.cxx
   sitkCastImageFilter.cxx
   sitkHashImageFilter.cxx
-  sitkBSplineTransformInitializerFilter.cxx
-  sitkCenteredTransformInitializerFilter.cxx
-  sitkCenteredVersorTransformInitializerFilter.cxx
-  sitkLandmarkBasedTransformInitializerFilter.cxx
 )
 
 if( SITK_4D_IMAGES )

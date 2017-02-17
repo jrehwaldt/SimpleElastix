@@ -153,24 +153,7 @@ namespace std
 %include "sitkImage.h"
 %include "sitkCommand.h"
 %include "sitkInterpolator.h"
-%include "sitkKernel.h"
 %include "sitkEvent.h"
-
-// Transforms
-%include "sitkTransform.h"
-%include "sitkBSplineTransform.h"
-%include "sitkDisplacementFieldTransform.h"
-%include "sitkAffineTransform.h"
-%include "sitkEuler3DTransform.h"
-%include "sitkEuler2DTransform.h"
-%include "sitkScaleTransform.h"
-%include "sitkScaleSkewVersor3DTransform.h"
-%include "sitkScaleVersor3DTransform.h"
-%include "sitkSimilarity2DTransform.h"
-%include "sitkSimilarity3DTransform.h"
-%include "sitkTranslationTransform.h"
-%include "sitkVersorTransform.h"
-%include "sitkVersorRigid3DTransform.h"
 
 
 // Basic Filter Base
@@ -194,10 +177,6 @@ namespace std
 
 // Basic Filters
 %include "sitkHashImageFilter.h"
-%include "sitkBSplineTransformInitializerFilter.h"
-%include "sitkCenteredTransformInitializerFilter.h"
-%include "sitkCenteredVersorTransformInitializerFilter.h"
-%include "sitkLandmarkBasedTransformInitializerFilter.h"
 %include "sitkCastImageFilter.h"
 
 // SimpleElastix
@@ -205,9 +184,6 @@ namespace std
 %template( VectorOfParameterMap ) std::vector< std::map< std::string, std::vector< std::string > > >;
 %include "sitkSimpleElastix.h"
 %include "sitkSimpleTransformix.h"
-
-// Registration
-%include "sitkImageRegistrationMethod.h"
 
 // Auto-generated headers
 %include "SimpleITKBasicFiltersGeneratedHeaders.i"

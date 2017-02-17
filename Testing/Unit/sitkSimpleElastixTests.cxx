@@ -152,6 +152,7 @@ TEST( SimpleElastix, ProceduralInterface )
   EXPECT_FALSE( silxIsEmpty( resultImage ) );
 
   SimpleElastix::ParameterMapType parameterMap = GetDefaultParameterMap( defaultParameterMapName );
+  parameterMap["MaximumNumberOfIterations"] = SimpleElastix::ParameterValueVectorType( 1, "1" );
   EXPECT_NO_THROW( resultImage = Elastix( fixedImage, movingImage, parameterMap ) );
   EXPECT_FALSE( silxIsEmpty( resultImage ) );
   EXPECT_NO_THROW( resultImage = Elastix( fixedImage, movingImage, parameterMap, true ) );
@@ -177,7 +178,9 @@ TEST( SimpleElastix, ProceduralInterface )
 
   SimpleElastix::ParameterMapVectorType parameterMapVector;
   parameterMapVector.push_back( GetDefaultParameterMap( defaultParameterMapName ) );
+  parameterMapVector[0]["MaximumNumberOfIterations"] = SimpleElastix::ParameterValueVectorType( 1, "1" );
   parameterMapVector.push_back( GetDefaultParameterMap( "rigid" ) );
+  parameterMapVector[1]["MaximumNumberOfIterations"] = SimpleElastix::ParameterValueVectorType( 1, "1" );
   EXPECT_NO_THROW( resultImage = Elastix( fixedImage, movingImage, parameterMapVector ) );
   EXPECT_FALSE( silxIsEmpty( resultImage ) );
   EXPECT_NO_THROW( resultImage = Elastix( fixedImage, movingImage, parameterMapVector, true ) );
@@ -399,6 +402,7 @@ TEST( SimpleElastix, Registration3D )
   Image resultImage; 
 
   SimpleElastix silx;
+  EXPECT_NO_THROW( silx.SetParameter( "MaximumNumberOfIterations", "1" ) );
   EXPECT_NO_THROW( silx.SetFixedImage( fixedImage ) );
   EXPECT_NO_THROW( silx.SetMovingImage( movingImage ) );
   EXPECT_NO_THROW( resultImage = silx.Execute() );
@@ -415,8 +419,8 @@ TEST( SimpleElastix, Registration4D )
 
   SimpleElastix silx; silx.LogToConsoleOn();
   silx.SetParameterMap( "groupwise" );
-  silx.SetParameter("MaximumNumberOfIterations", "8.0");
-  silx.SetParameter("FinalGridSpacingInPhysicalUnits", "32.0");
+  silx.SetParameter( "MaximumNumberOfIterations", "2" );
+  silx.SetParameter( "FinalGridSpacingInPhysicalUnits", "32.0" );
   EXPECT_NO_THROW( silx.SetFixedImage( fixedImage ) );
   EXPECT_NO_THROW( silx.SetMovingImage( movingImage ) );
   EXPECT_NO_THROW( resultImage = silx.Execute() );

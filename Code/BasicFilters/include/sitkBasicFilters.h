@@ -21,9 +21,6 @@
 #include "sitkMacro.h"
 #include "sitkInterpolator.h"
 
-// todo this should be moved to a more local place
-#include "sitkTransform.h"
-
 #if defined( SITKDLL )
   #ifdef SimpleITKBasicFilters0_EXPORTS
     #define SITKBasicFilters0_EXPORT SITK_ABI_EXPORT

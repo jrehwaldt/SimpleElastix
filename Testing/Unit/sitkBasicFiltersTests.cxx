@@ -29,10 +29,6 @@
 #include <sitkJoinSeriesImageFilter.h>
 #include <sitkLabelMapContourOverlayImageFilter.h>
 #include <sitkMergeLabelMapFilter.h>
-#include <sitkBSplineTransformInitializerFilter.h>
-#include <sitkCenteredTransformInitializerFilter.h>
-#include <sitkCenteredVersorTransformInitializerFilter.h>
-#include <sitkLandmarkBasedTransformInitializerFilter.h>
 #include <sitkCommand.h>
 
 #include "itkVectorImage.h"
@@ -42,14 +38,6 @@
 #include "itkMergeLabelMapFilter.h"
 
 #include "sitkShow.h"
-
-#include "sitkVersorRigid3DTransform.h"
-#include "sitkSimilarity3DTransform.h"
-#include "sitkAffineTransform.h"
-#include "sitkEuler2DTransform.h"
-#include "sitkSimilarity2DTransform.h"
-#include "sitkVersorTransform.h"
-#include "sitkScaleVersor3DTransform.h"
 
 TEST(BasicFilters,MergeLabelMap_ENUMCHECK) {
   typedef itk::MergeLabelMapFilter< itk::LabelMap< itk::LabelObject<int, 3> > >  ITKType;

@@ -27,20 +27,6 @@
 #include "sitkDetail.h"
 #include "sitkVersion.h"
 #include "sitkImage.h"
-#include "sitkTransform.h"
-#include "sitkBSplineTransform.h"
-#include "sitkDisplacementFieldTransform.h"
-#include "sitkAffineTransform.h"
-#include "sitkEuler2DTransform.h"
-#include "sitkEuler3DTransform.h"
-#include "sitkScaleTransform.h"
-#include "sitkScaleSkewVersor3DTransform.h"
-#include "sitkScaleVersor3DTransform.h"
-#include "sitkSimilarity2DTransform.h"
-#include "sitkSimilarity3DTransform.h"
-#include "sitkTranslationTransform.h"
-#include "sitkVersorTransform.h"
-#include "sitkVersorRigid3DTransform.h"
 #include "sitkShow.h"
 
 #include "sitkInterpolator.h"
@@ -64,16 +50,10 @@
 #include "sitkComposeImageFilter.h"
 #include "sitkPixelIDTypeLists.h"
 
-#include "sitkBSplineTransformInitializerFilter.h"
-#include "sitkCenteredTransformInitializerFilter.h"
-#include "sitkCenteredVersorTransformInitializerFilter.h"
-#include "sitkLandmarkBasedTransformInitializerFilter.h"
 #include "sitkCastImageFilter.h"
 
 #include "sitkSimpleElastix.h"
 #include "sitkSimpleTransformix.h"
-
-#include "sitkImageRegistrationMethod.h"
 
 // These headers are auto-generated
 #include "SimpleITKBasicFiltersGeneratedHeaders.h"

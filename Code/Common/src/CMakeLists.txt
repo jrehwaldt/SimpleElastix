@@ -2,25 +2,10 @@ set ( SimpleITKCommonSource
   sitkImage.cxx
   sitkImageExplicit.cxx
   sitkProcessObject.cxx
-  sitkTransform.cxx
-  sitkAffineTransform.cxx
-  sitkBSplineTransform.cxx
-  sitkDisplacementFieldTransform.cxx
-  sitkEuler2DTransform.cxx
-  sitkEuler3DTransform.cxx
-  sitkScaleTransform.cxx
-  sitkScaleSkewVersor3DTransform.cxx
-  sitkScaleVersor3DTransform.cxx
-  sitkSimilarity2DTransform.cxx
-  sitkSimilarity3DTransform.cxx
-  sitkTranslationTransform.cxx
-  sitkVersorTransform.cxx
-  sitkVersorRigid3DTransform.cxx
   sitkCommand.cxx
   sitkFunctionCommand.cxx
   sitkPixelIDValues.cxx
   sitkExceptionObject.cxx
-  sitkKernel.cxx
   sitkEvent.cxx
   sitkInterpolator.cxx
   sitkVersion.cxx
