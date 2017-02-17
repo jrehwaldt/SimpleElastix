@@ -1,6 +1,3 @@
-sitk_add_python_test( Example.ImageCreateAndSet
-  "${CMAKE_CURRENT_SOURCE_DIR}/ImageCreateAndSet.py" )
-
 sitk_add_python_test( Example.ExtractSlice
   "${CMAKE_CURRENT_SOURCE_DIR}/ExtractSlice.py"
   DATA{${SimpleITK_DATA_ROOT}/Input/OAS1_0001_MR1_mpr-1_anon.nrrd}
@@ -35,12 +32,5 @@ sitk_add_python_test( Example.DicomImagePrintTags
     DATA{${SimpleITK_DATA_ROOT}/Input/DicomSeries/Image0075.dcm}
   )
 
-
 set_tests_properties( Python.Example.DicomImagePrintTags
   PROPERTIES PASS_REGULAR_EXPRESSION "\\(0008|0060\\) = = \"MR\"")
-
-sitk_add_python_test(Example.DicomModifyTags
-  "${CMAKE_CURRENT_SOURCE_DIR}/DicomModifyTags.py"
-   DATA{${SimpleITK_DATA_ROOT}/Input/DicomSeries/Image0075.dcm}
-   ${TEST_HARNESS_TEMP_DIRECTORY}/modifiedTags.dcm
-  )
