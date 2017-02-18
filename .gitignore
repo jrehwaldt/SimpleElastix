@@ -45,3 +45,7 @@ Build/
 *~
 *.pyc
 *.orig
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
