@@ -72,8 +72,7 @@ ExternalProject_Add(${proj}
   -DCMAKE_SKIP_RPATH:BOOL=ON
   -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
   -DITK_LEGACY_REMOVE:BOOL=ON
-  -DITK_BUILD_DEFAULT_MODULES:BOOL=ON
-  -DModule_ITKReview:BOOL=ON
+  -DITK_BUILD_DEFAULT_MODULES:BOOL=OFF
   -DITK_USE_GIT_PROTOCOL:BOOL=${ITK_USE_GIT_PROTOCOL}
   -DITK_WRAP_float:BOOL=ON
   -DITK_WRAP_unsigned_char:BOOL=ON
@@ -86,6 +85,25 @@ ExternalProject_Add(${proj}
   -DITK_WRAP_rgb_unsigned_char:BOOL=ON
   -DITK_WRAP_rgb_unsigned_short:BOOL=ON
   -DITK_WRAP_PYTHON:BOOL=${ITK_WRAPPING}
+  # Modules required by SimpleITK
+  -DModule_ITKCommon:BOOL=ON
+  -DModule_ITKDistanceMap:BOOL=ON
+  -DModule_ITKIOGDCM:BOOL=ON
+  -DModule_ITKIOImageBase:BOOL=ON
+  -DModule_ITKImageCompare:BOOL=ON
+  -DModule_ITKImageFilterBase:BOOL=ON
+  -DModule_ITKImageFusion:BOOL=ON
+  -DModule_ITKImageGrid:BOOL=ON
+  -DModule_ITKImageIntensity:BOOL=ON
+  -DModule_ITKImageSources:BOOL=ON
+  -DModule_ITKImageStatistics:BOOL=ON
+  -DModule_ITKLabelVoting:BOOL=ON
+  -DModule_ITKStatistics:BOOL=ON
+  # Additional modules required by elastix
+  -DModule_ITKIOMesh:BOOL=ON
+  -DModule_ITKOptimizersv4:BOOL=ON
+  -DModule_ITKRegistrationCommon:BOOL=ON
+  -DModule_ITKIOXML:BOOL=ON
   # Required as to not install into system
   -DINSTALL_WRAP_ITK_COMPATIBILITY:BOOL=OFF
   # Swig
@@ -100,3 +118,27 @@ ExternalProject_Add(${proj}
 ExternalProject_Get_Property(ITK install_dir)
 set(ITK_DIR "${install_dir}/lib/cmake/ITK-4.10" )
 set(WrapITK_DIR "${ITK_DIR}/WrapITK")
+
+ # ITKBinaryMathematicalMorphology
+ # ITKCommon
+ # ITKDisplacementField
+ # ITKDistanceMap
+ # ITKIOGDCM
+ # ITKIOImageBase
+ # ITKIOTransformBase
+ # ITKImageCompare
+ # ITKImageCompose
+ # ITKImageFilterBase
+ # ITKImageFusion
+ # ITKImageGrid
+ # ITKImageIntensity
+ # ITKImageLabel
+ # ITKImageSources
+ # ITKImageStatistics
+ # ITKKWIML
+ # ITKLabelMap
+ # ITKLabelVoting
+ # ITKMathematicalMorphology
+ # ITKStatistics
+ # ITKTransform
+ # 

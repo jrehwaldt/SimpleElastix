@@ -15,52 +15,24 @@
 # ensure that we have the 'IO on' too.
 #
 list(APPEND _SITK_REQUIRED_ITK_MODULES
-  ITKAnisotropicSmoothing
-  ITKAntiAlias
-  ITKBiasCorrection
-  ITKBinaryMathematicalMorphology
-  ITKClassifiers
-  ITKColormap
   ITKCommon
-  ITKConnectedComponents
-  ITKConvolution
-  ITKCurvatureFlow
-  ITKDeconvolution
-  ITKDenoising
-  ITKDisplacementField
   ITKDistanceMap
-  ITKFFT
-  ITKFastMarching
-  ITKImageAdaptors
+  ITKIOGDCM
+  ITKIOImageBase
   ITKImageCompare
-  ITKImageCompose
-  ITKImageFeature
   ITKImageFilterBase
   ITKImageFusion
-  ITKImageGradient
   ITKImageGrid
   ITKImageIntensity
-  ITKImageLabel
-  ITKImageNoise
   ITKImageSources
   ITKImageStatistics
-  ITKLabelMap
   ITKLabelVoting
-  ITKLevelSets
-  ITKMathematicalMorphology
-  ITKPDEDeformableRegistration
-  ITKRegionGrowing
-  ITKReview
-  ITKSmoothing
   ITKStatistics
-  ITKThresholding
-  ITKTransform
-  ITKWatersheds
 )
 
 foreach(itkDependency ${_SITK_REQUIRED_ITK_MODULES})
   list(FIND ITK_MODULES_ENABLED ${itkDependency} ITKDependency_FOUND)
   if(ITKDependency_FOUND EQUAL -1)
-    message(FATAL_ERROR "SimpleITK requires that the ${itkDependency} module be turned on in ITK")
+    message(FATAL_ERROR "SimpleElastix requires that the ${itkDependency} module be turned on in ITK")
   endif()
 endforeach()
