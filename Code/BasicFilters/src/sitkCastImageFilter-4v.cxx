@@ -27,7 +27,6 @@ namespace simple
 
 void CastImageFilter::RegisterMemberFactory4v()
 {
-
   // cast between vector images
   m_DualMemberFactory->RegisterMemberFunctions<VectorPixelIDTypeList, VectorPixelIDTypeList, 4, CastAddressor<MemberFunctionType> > ();
 

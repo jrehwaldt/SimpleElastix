@@ -14,8 +14,7 @@ set ( SimpleITKCommonSource
   )
 
 set ( ITK_NO_IO_FACTORY_REGISTER_MANAGER 1 )
-find_package(ITK COMPONENTS ITKCommon ITKImageCompose
-  ITKImageIntensity ITKLabelMap ITKTransform ITKIOTransformBase ITKDisplacementField REQUIRED)
+find_package(ITK REQUIRED)
 include(${ITK_USE_FILE})
 
 add_library ( SimpleITKCommon ${SimpleITKCommonSource} ${SimpleITKAncillarySource} )

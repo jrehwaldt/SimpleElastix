@@ -33,8 +33,8 @@ SimpleTransformix::SimpleTransformixImpl
   this->m_OutputDirectory = "";
   this->m_LogFileName = "";
   
-  this->m_LogToFile = "";
-  this->m_LogToConsole = "";
+  this->LogToFileOff();
+  this->LogToConsoleOff();
 }
 
 SimpleTransformix::SimpleTransformixImpl

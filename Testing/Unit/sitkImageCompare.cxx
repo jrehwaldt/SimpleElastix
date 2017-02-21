@@ -43,16 +43,6 @@ void ImageCompare::NormalizeAndSave ( const sitk::Image &input, const std::strin
     {
     image = sitk::Cast( image, sitk::sitkUInt64);
     }
-  else if (image.GetPixelIDValue() == sitk::sitkComplexFloat64
-           || image.GetPixelIDValue() == sitk::sitkComplexFloat32)
-    {
-    image = sitk::ComplexToModulus(image);
-    }
-  else if (image.GetNumberOfComponentsPerPixel() != 1)
-    {
-    // just use the magnitude for vector images
-    image = sitk::VectorMagnitude(image);
-    }
 
   // Extract the center slice of our image
   if ( input.GetDimension() == 3 )
@@ -104,36 +94,8 @@ float ImageCompare::testImages( const itk::simple::Image& testImage,
     try
       {
 
-      if ( baselineImage.GetPixelID() == sitk::sitkComplexFloat32 ||
-           baselineImage.GetPixelID() == sitk::sitkComplexFloat64 )
-        {
-
-        const sitk::Image diff =  sitk::Subtract( testImage, baselineImage );
-        // for complex number we multiply the image by it's complex
-        // conjugate, this will produce only a real value result
-        const sitk::Image conj = sitk::RealAndImaginaryToComplex( sitk::ComplexToReal( diff ),
-                                                                  sitk::Multiply( sitk::ComplexToImaginary( diff ), -1.0 ) );
-        diffSquared = sitk::ComplexToReal( sitk::Multiply( diff, conj ) );
-        }
-      else if ( baselineImage.GetNumberOfComponentsPerPixel() > 1 )
-        {
-        const sitk::Image diff =  sitk::Subtract( sitk::Cast( testImage, sitk::sitkVectorFloat32 ), sitk::Cast( baselineImage, sitk::sitkVectorFloat32 ) );
-
-        // for vector image just do a sum of the components
-        diffSquared  = sitk::Pow( sitk::VectorIndexSelectionCast( diff, 0 ), 2.0 );
-        for ( unsigned int i = 1; i < diff.GetNumberOfComponentsPerPixel(); ++i )
-          {
-          const sitk::Image temp = sitk::Pow( sitk::VectorIndexSelectionCast( diff, i ), 2.0 );
-          diffSquared = sitk::Add( temp, diffSquared );
-          }
-
-        diffSquared = sitk::Divide( diffSquared, diff.GetNumberOfComponentsPerPixel() );
-        }
-      else
-        {
         sitk::Image diff =  sitk::Subtract( sitk::Cast( testImage, sitk::sitkFloat32 ), sitk::Cast( baselineImage, sitk::sitkFloat32 ) );
         diffSquared = sitk::Multiply( diff, diff );
-        }
 
       }
     catch ( std::exception& e )

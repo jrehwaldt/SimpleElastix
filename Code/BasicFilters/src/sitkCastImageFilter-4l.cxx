@@ -27,7 +27,6 @@ namespace simple
 
 void CastImageFilter::RegisterMemberFactory4l()
 {
-
   // basic to Label
   m_DualMemberFactory->RegisterMemberFunctions<IntegerPixelIDTypeList, LabelPixelIDTypeList, 4, ToLabelAddressor<MemberFunctionType> > ();
 

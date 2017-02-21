@@ -19,7 +19,7 @@ foreach( mod IN LISTS ITK_MODULES_ENABLED)
   endif()
 endforeach()
 
-find_package(ITK COMPONENTS REQUIRED)
+find_package(ITK REQUIRED)
 include(${ITK_USE_FILE})
 
 add_library ( SimpleITKIO ${SimpleITKIOSource} )

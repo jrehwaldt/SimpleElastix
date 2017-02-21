@@ -35,8 +35,8 @@ SimpleElastix::SimpleElastixImpl
   m_OutputDirectory             = ".";
   m_LogFileName                 = "";
 
-  this->m_LogToFile = false;
-  this->m_LogToConsole = false;
+  this->LogToFileOff();
+  this->LogToConsoleOff();
 
   ParameterMapVectorType defaultParameterMap;
   defaultParameterMap.push_back( ParameterObjectType::GetDefaultParameterMap( "translation" ) );
