@@ -43,7 +43,7 @@ ExternalProject_Add( ${proj}
   -DUSE_AdaptiveStochasticGradientDescent:BOOL=ON                                           
   -DUSE_AdvancedAffineTransformElastix:BOOL=ON
   -DUSE_AdvancedBSplineTransform:BOOL=ON                                           
-  -DUSE_AdvancedKappaStatisticMetric:BOOL=ON                                           
+  -DUSE_AdvancedKappaStatisticMetric:BOOL=OFF                                           
   -DUSE_AdvancedMattesMutualInformationMetric:BOOL=ON                                           
   -DUSE_AdvancedMeanSquaresMetric:BOOL=ON                                           
   -DUSE_AdvancedNormalizedCorrelationMetric:BOOL=ON                                           
@@ -83,10 +83,10 @@ ExternalProject_Add( ${proj}
   -DUSE_MovingShrinkingPyramid:BOOL=OFF                                          
   -DUSE_MovingSmoothingPyramid:BOOL=ON                                           
   -DUSE_MultiBSplineTransformWithNormal:BOOL=OFF                                           
-  -DUSE_MultiInputRandomCoordinateSampler:BOOL=ON                                           
+  -DUSE_MultiInputRandomCoordinateSampler:BOOL=OFF                                           
   -DUSE_MultiMetricMultiResolutionRegistration:BOOL=ON                                           
   -DUSE_MultiResolutionRegistration:BOOL=ON                                           
-  -DUSE_MultiResolutionRegistrationWithFeatures:BOOL=ON                                           
+  -DUSE_MultiResolutionRegistrationWithFeatures:BOOL=OFF                                           
   -DUSE_MutualInformationHistogramMetric:BOOL=ON                                           
   -DUSE_MyStandardResampler:BOOL=ON                                           
   -DUSE_NearestNeighborInterpolator:BOOL=ON                                           
@@ -105,8 +105,8 @@ ExternalProject_Add( ${proj}
   -DUSE_RandomSamplerSparseMask:BOOL=ON                                           
   -DUSE_RayCastInterpolator:BOOL=OFF                                           
   -DUSE_RayCastResampleInterpolator:BOOL=OFF                                           
-  -DUSE_ReducedDimensionBSplineInterpolator:BOOL=ON                                           
-  -DUSE_ReducedDimensionBSplineResampleInterpolator:BOOL=ON
+  -DUSE_ReducedDimensionBSplineInterpolator:BOOL=${SITK_4D_IMAGES}                                            
+  -DUSE_ReducedDimensionBSplineResampleInterpolator:BOOL=${SITK_4D_IMAGES} 
   -DUSE_RegularStepGradientDescent:BOOL=OFF                                           
   -DUSE_SimilarityTransformElastix:BOOL=ON                                           
   -DUSE_Simplex:BOOL=OFF                                           
@@ -119,7 +119,7 @@ ExternalProject_Add( ${proj}
   -DUSE_TranslationTransformElastix:BOOL=ON                                           
   -DUSE_VarianceOverLastDimensionMetric:BOOL=${SITK_4D_IMAGES}                                           
   -DUSE_ViolaWellsMutualInformationMetric:BOOL=OFF                                           
-  -DUSE_WeightedCombinationTransformElastix:BOOL=ON
+  -DUSE_WeightedCombinationTransformElastix:BOOL=OFF
   DEPENDS ${${CMAKE_PROJECT_NAME}_DEPENDENCIES}
 )
 
