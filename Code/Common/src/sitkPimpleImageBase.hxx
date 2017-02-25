@@ -385,14 +385,6 @@ namespace itk
       {
         return this->InternalGetPixel< VectorPixelID<double> >( idx );
       }
-    virtual std::complex<float>   GetPixelAsComplexFloat32( const std::vector<uint32_t> &idx ) const
-      {
-        return this->InternalGetPixel< BasicPixelID<std::complex<float> > >( idx );
-      }
-    virtual std::complex<double>   GetPixelAsComplexFloat64(  const std::vector<uint32_t> &idx ) const
-      {
-        return this->InternalGetPixel< BasicPixelID<std::complex<double> > >( idx );
-      }
 
     virtual int8_t  *GetBufferAsInt8()
       {
@@ -616,15 +608,6 @@ namespace itk
       {
         this->InternalSetPixel<VectorPixelID<double> >( idx, v );
       }
-    virtual void SetPixelAsComplexFloat32( const std::vector<uint32_t> &idx, const std::complex<float> v )
-      {
-        this->InternalSetPixel<BasicPixelID<std::complex<float> > >( idx, v );
-      }
-    virtual void SetPixelAsComplexFloat64( const std::vector<uint32_t> &idx, const std::complex<double> v )
-      {
-        this->InternalSetPixel<BasicPixelID<std::complex<double> > >( idx, v );
-      }
-
 
   protected:
 

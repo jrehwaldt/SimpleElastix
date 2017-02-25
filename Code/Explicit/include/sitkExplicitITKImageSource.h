@@ -45,10 +45,6 @@ extern template class SITKExplicit_EXPORT_EXPLICIT itk::ImageSource<itk::Image<s
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::ImageSource<itk::Image<short, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::ImageSource<itk::Image<signed char, 2u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::ImageSource<itk::Image<signed char, 3u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::ImageSource<itk::Image<std::complex<double>, 2u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::ImageSource<itk::Image<std::complex<double>, 3u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::ImageSource<itk::Image<std::complex<float>, 2u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::ImageSource<itk::Image<std::complex<float>, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::ImageSource<itk::Image<unsigned char, 1u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::ImageSource<itk::Image<unsigned char, 2u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::ImageSource<itk::Image<unsigned char, 3u> >;

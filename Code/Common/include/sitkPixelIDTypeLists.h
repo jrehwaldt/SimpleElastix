@@ -25,8 +25,6 @@
 
 #include "Ancillary/TypeList.h"
 
-#include <complex>
-
 namespace itk
 {
 namespace simple
@@ -94,13 +92,6 @@ typedef typelist::MakeTypeList<BasicPixelID<uint8_t>,
  */
 typedef typelist::MakeTypeList<BasicPixelID<float>,
                                BasicPixelID<double> >::Type RealPixelIDTypeList;
-
-/** List of pixel ids which are std::complex types for the itk::Image class.
- *
- * \sa BasicPixelID
- */
-typedef typelist::MakeTypeList< BasicPixelID<std::complex< float > >,
-                                BasicPixelID<std::complex< double > > >::Type ComplexPixelIDTypeList;
 
 /** List of pixel ids which are signed
  *
@@ -175,10 +166,7 @@ typedef UnsignedIntegerPixelIDTypeList IntegerLabelPixelIDTypeList;
  * \sa VectorPixelID
  * \sa LabelPixelID
  */
-typedef typelist::Append<
-  typelist::Append< BasicPixelIDTypeList, ComplexPixelIDTypeList >::Type,
-  VectorPixelIDTypeList
-  >::Type NonLabelPixelIDTypeList;
+typedef typelist::Append< BasicPixelIDTypeList, VectorPixelIDTypeList >::Type NonLabelPixelIDTypeList;
 
 
 /** List of all pixel ids available, this include image of itk::Image,
@@ -191,13 +179,11 @@ typedef typelist::Append<
  * \sa LabelPixelID
  */
 typedef typelist::Append<
-  typelist::Append< BasicPixelIDTypeList, ComplexPixelIDTypeList >::Type,
+  BasicPixelIDTypeList,
   typelist::Append< VectorPixelIDTypeList, LabelPixelIDTypeList >::Type
   >::Type AllPixelIDTypeList;
 
-
 #ifdef SITK_EXPRESS_INSTANTIATEDPIXELS
-
 
 // this is a quick and dirty list to only be used for development purposes
 typedef typelist::MakeTypeList< BasicPixelID<int16_t>, BasicPixelID<float>, BasicPixelID<double>, VectorPixelID<float> >::Type InstantiatedPixelIDTypeList;

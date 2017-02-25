@@ -27,7 +27,6 @@ extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<double, 2u>, itk::Image<long, 2u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<double, 2u>, itk::Image<short, 2u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<double, 2u>, itk::Image<signed char, 2u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<double, 2u>, itk::Image<std::complex<double>, 2u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<double, 2u>, itk::Image<unsigned char, 2u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<double, 2u>, itk::Image<unsigned int, 2u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<double, 2u>, itk::Image<unsigned long, 2u> >;
@@ -38,7 +37,6 @@ extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<double, 3u>, itk::Image<long, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<double, 3u>, itk::Image<short, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<double, 3u>, itk::Image<signed char, 3u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<double, 3u>, itk::Image<std::complex<double>, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<double, 3u>, itk::Image<unsigned char, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<double, 3u>, itk::Image<unsigned int, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<double, 3u>, itk::Image<unsigned long, 3u> >;
@@ -49,7 +47,6 @@ extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<float, 2u>, itk::Image<long, 2u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<float, 2u>, itk::Image<short, 2u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<float, 2u>, itk::Image<signed char, 2u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<float, 2u>, itk::Image<std::complex<float>, 2u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<float, 2u>, itk::Image<unsigned char, 2u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<float, 2u>, itk::Image<unsigned int, 2u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<float, 2u>, itk::Image<unsigned long, 2u> >;
@@ -60,7 +57,6 @@ extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<float, 3u>, itk::Image<long, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<float, 3u>, itk::Image<short, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<float, 3u>, itk::Image<signed char, 3u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<float, 3u>, itk::Image<std::complex<float>, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<float, 3u>, itk::Image<unsigned char, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<float, 3u>, itk::Image<unsigned int, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<float, 3u>, itk::Image<unsigned long, 3u> >;
@@ -148,14 +144,6 @@ extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<signed char, 3u>, itk::Image<unsigned int, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<signed char, 3u>, itk::Image<unsigned long, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<signed char, 3u>, itk::Image<unsigned short, 3u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<std::complex<double>, 2u>, itk::Image<double, 2u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<std::complex<double>, 2u>, itk::Image<std::complex<double>, 2u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<std::complex<double>, 3u>, itk::Image<double, 3u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<std::complex<double>, 3u>, itk::Image<std::complex<double>, 3u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<std::complex<float>, 2u>, itk::Image<float, 2u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<std::complex<float>, 2u>, itk::Image<std::complex<float>, 2u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<std::complex<float>, 3u>, itk::Image<float, 3u> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<std::complex<float>, 3u>, itk::Image<std::complex<float>, 3u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<unsigned char, 1u>, itk::Image<unsigned char, 1u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<unsigned char, 2u>, itk::Image<double, 2u> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::InPlaceImageFilter<itk::Image<unsigned char, 2u>, itk::Image<float, 2u> >;

@@ -45,10 +45,6 @@ template class SITKExplicit_EXPORT itk::ImageRegionConstIterator<itk::Image<shor
 template class SITKExplicit_EXPORT itk::ImageRegionConstIterator<itk::Image<short, 3u> >;
 template class SITKExplicit_EXPORT itk::ImageRegionConstIterator<itk::Image<signed char, 2u> >;
 template class SITKExplicit_EXPORT itk::ImageRegionConstIterator<itk::Image<signed char, 3u> >;
-template class SITKExplicit_EXPORT itk::ImageRegionConstIterator<itk::Image<std::complex<double>, 2u> >;
-template class SITKExplicit_EXPORT itk::ImageRegionConstIterator<itk::Image<std::complex<double>, 3u> >;
-template class SITKExplicit_EXPORT itk::ImageRegionConstIterator<itk::Image<std::complex<float>, 2u> >;
-template class SITKExplicit_EXPORT itk::ImageRegionConstIterator<itk::Image<std::complex<float>, 3u> >;
 template class SITKExplicit_EXPORT itk::ImageRegionConstIterator<itk::Image<unsigned char, 1u> >;
 template class SITKExplicit_EXPORT itk::ImageRegionConstIterator<itk::Image<unsigned char, 2u> >;
 template class SITKExplicit_EXPORT itk::ImageRegionConstIterator<itk::Image<unsigned char, 3u> >;

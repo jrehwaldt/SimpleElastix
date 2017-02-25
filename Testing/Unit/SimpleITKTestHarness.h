@@ -23,6 +23,7 @@
 #include <vector>
 #include <iterator>
 #include <algorithm>
+#include <cmath>
 
 // This is needed before the gtest include for lookup of the operator
 // to work with clang 5.1

@@ -98,9 +98,6 @@ namespace itk
     virtual std::vector<float>    GetPixelAsVectorFloat32( const std::vector<uint32_t> &idx ) const = 0;
     virtual std::vector<double>   GetPixelAsVectorFloat64(  const std::vector<uint32_t> &idx ) const = 0;
 
-    virtual std::complex<float>  GetPixelAsComplexFloat32( const std::vector<uint32_t> &idx ) const = 0;
-    virtual std::complex<double> GetPixelAsComplexFloat64( const std::vector<uint32_t> &idx ) const = 0;
-
     virtual void SetPixelAsInt8( const std::vector<uint32_t> &idx, int8_t v ) = 0;
     virtual void SetPixelAsUInt8( const std::vector<uint32_t> &idx, uint8_t v ) = 0;
     virtual void SetPixelAsInt16( const std::vector<uint32_t> &idx, int16_t v ) = 0;
@@ -122,10 +119,6 @@ namespace itk
     virtual void SetPixelAsVectorUInt64( const std::vector<uint32_t> &idx, const std::vector<uint64_t> &v ) = 0;
     virtual void SetPixelAsVectorFloat32( const std::vector<uint32_t> &idx, const std::vector<float> &v ) = 0;
     virtual void SetPixelAsVectorFloat64( const std::vector<uint32_t> &idx, const std::vector<double> &v ) = 0;
-
-    virtual void SetPixelAsComplexFloat32( const std::vector<uint32_t> &idx, const std::complex<float> v ) = 0;
-    virtual void SetPixelAsComplexFloat64( const std::vector<uint32_t> &idx, const std::complex<double> v ) = 0;
-
 
     virtual int8_t   *GetBufferAsInt8( ) = 0;
     virtual uint8_t  *GetBufferAsUInt8( ) = 0;

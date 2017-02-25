@@ -77,14 +77,6 @@ const std::string GetPixelIDValueAsString( PixelIDValueType type )
     {
     return "64-bit float";
     }
-  else if ( type == sitkComplexFloat32 )
-    {
-    return "complex of 32-bit float";
-    }
-  else if ( type == sitkComplexFloat64 )
-    {
-    return "complex of 64-bit float";
-    }
   else if ( type == sitkVectorUInt8 )
     {
     return "vector of 8-bit unsigned integer";
@@ -254,14 +246,6 @@ PixelIDValueType GetPixelIDValueFromString(const std::string &enumString )
   else if ( enumString == "sitkFloat64" )
     {
       return sitkFloat64;
-    }
-  else if ( enumString == "sitkComplexFloat32" )
-    {
-      return sitkComplexFloat32;
-    }
-  else if ( enumString == "sitkComplexFloat64" )
-    {
-      return sitkComplexFloat64;
     }
   else if ( enumString == "sitkVectorUInt8" )
     {

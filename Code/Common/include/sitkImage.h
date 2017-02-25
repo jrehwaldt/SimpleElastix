@@ -281,9 +281,6 @@ namespace simple
     std::vector<uint64_t> GetPixelAsVectorUInt64( const std::vector<uint32_t> &idx ) const;
     std::vector<float>    GetPixelAsVectorFloat32( const std::vector<uint32_t> &idx ) const;
     std::vector<double>   GetPixelAsVectorFloat64( const std::vector<uint32_t> &idx ) const;
-
-    std::complex<float>  GetPixelAsComplexFloat32( const std::vector<uint32_t> &idx ) const;
-    std::complex<double> GetPixelAsComplexFloat64( const std::vector<uint32_t> &idx ) const;
     /** @} */
 
     /** \brief Set the value of a pixel
@@ -323,10 +320,6 @@ namespace simple
     void SetPixelAsVectorUInt64( const std::vector<uint32_t> &idx, const std::vector<uint64_t> &v );
     void SetPixelAsVectorFloat32( const std::vector<uint32_t> &idx, const std::vector<float> &v );
     void SetPixelAsVectorFloat64( const std::vector<uint32_t> &idx, const std::vector<double> &v );
-
-    void SetPixelAsComplexFloat32( const std::vector<uint32_t> &idx, const std::complex<float> v );
-    void SetPixelAsComplexFloat64( const std::vector<uint32_t> &idx, const std::complex<double> v );
-
     /** @} */
 
    /** \brief Get a pointer to the image buffer

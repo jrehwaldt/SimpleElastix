@@ -43,8 +43,6 @@ template class SITKExplicit_EXPORT itk::ImportImageContainer<itk::SizeValueType,
 template class SITKExplicit_EXPORT itk::ImportImageContainer<itk::SizeValueType, long long>;
 template class SITKExplicit_EXPORT itk::ImportImageContainer<itk::SizeValueType, short>;
 template class SITKExplicit_EXPORT itk::ImportImageContainer<itk::SizeValueType, signed char>;
-template class SITKExplicit_EXPORT itk::ImportImageContainer<itk::SizeValueType, std::complex<double> >;
-template class SITKExplicit_EXPORT itk::ImportImageContainer<itk::SizeValueType, std::complex<float> >;
 template class SITKExplicit_EXPORT itk::ImportImageContainer<itk::SizeValueType, std::deque<itk::LabelObjectLine<2u>, std::allocator<itk::LabelObjectLine<2u> > > >;
 template class SITKExplicit_EXPORT itk::ImportImageContainer<itk::SizeValueType, std::deque<itk::LabelObjectLine<3u>, std::allocator<itk::LabelObjectLine<3u> > > >;
 template class SITKExplicit_EXPORT itk::ImportImageContainer<itk::SizeValueType, unsigned char>;

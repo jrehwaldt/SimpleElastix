@@ -18,8 +18,6 @@
 #ifndef sitkExplicitITK_h
 #define sitkExplicitITK_h
 
-#include <complex>
-
 #include "itkAttributeLabelObject.h"
 #include "itkShapeLabelObject.h"
 #include "itkVectorImage.h"
@@ -32,7 +30,6 @@
 #include "sitkExplicitITKImportImageContainer.h"
 #include "sitkExplicitITKImageBase.h"
 #include "sitkExplicitITKImage.h"
-#include "sitkExplicitITKLabelMap.h"
 #include "sitkExplicitITKVectorImage.h"
 
 

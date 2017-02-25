@@ -27,9 +27,6 @@
 
 #include "sitkImageOperators.h"
 
-#include "sitkComplexToRealImageFilter.h"
-#include "sitkComplexToImaginaryImageFilter.h"
-#include "sitkRealAndImaginaryToComplexImageFilter.h"
 #include "sitkImportImageFilter.h"
 
 #include "sitkJoinSeriesImageFilter.h"

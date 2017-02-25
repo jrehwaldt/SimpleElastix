@@ -4,7 +4,7 @@
   "template_test_filename" : "ImageFilter",
   "number_of_inputs" : 1,
   "doc" : "",
-  "pixel_types" : "typelist::Append< SignedPixelIDTypeList, ComplexPixelIDTypeList >::Type",
+  "pixel_types" : "SignedPixelIDTypeList",
   "filter_type" : "itk::UnaryFunctorImageFilter< InputImageType, OutputImageType, itk::Functor::UnaryMinus<typename InputImageType::PixelType, typename OutputImageType::PixelType> >",
   "vector_pixel_types_by_component" : "SignedVectorPixelIDTypeList",
   "members" : [],
@@ -25,15 +25,6 @@
       "md5hash" : "ded119ebd73f6331ee3b29048fba4b6d",
       "inputs" : [
         "Input/cthead1-Float.mha"
-      ]
-    },
-    {
-      "tag" : "complex",
-      "description" : "Run on a complex image",
-      "settings" : [],
-      "md5hash" : "5e444ac1752722e34aaa9bb77685cad4",
-      "inputs" : [
-        "Input/RA-FFT-Complex.nrrd"
       ]
     },
     {

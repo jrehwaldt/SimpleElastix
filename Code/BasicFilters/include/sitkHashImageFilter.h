@@ -42,9 +42,7 @@ namespace itk {
       typedef std::string (Self::*MemberFunctionType)( const Image& );
 
       // this filter works with all itk::Image and itk::VectorImage types.
-      typedef typelist::Append<
-        typelist::Append< BasicPixelIDTypeList, ComplexPixelIDTypeList>::Type,
-        VectorPixelIDTypeList >::Type PixelIDTypeList;
+      typedef typelist::Append< BasicPixelIDTypeList, VectorPixelIDTypeList >::Type PixelIDTypeList;
 
       HashImageFilter();
 

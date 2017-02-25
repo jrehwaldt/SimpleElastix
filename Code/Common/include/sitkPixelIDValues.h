@@ -91,8 +91,6 @@ enum PixelIDValueEnum {
   sitkInt64 = PixelIDToPixelIDValue< BasicPixelID<int64_t> >::Result,   //< Signed 64 bit integer
   sitkFloat32 = PixelIDToPixelIDValue< BasicPixelID<float> >::Result,   //< 32 bit float
   sitkFloat64 = PixelIDToPixelIDValue< BasicPixelID<double> >::Result,  //< 64 bit float
-  sitkComplexFloat32 = PixelIDToPixelIDValue< BasicPixelID<std::complex<float> > >::Result,  //< compelex number of 32 bit float
-  sitkComplexFloat64 = PixelIDToPixelIDValue< BasicPixelID<std::complex<double> > >::Result,  //< compelex number of 64 bit float
   sitkVectorUInt8 = PixelIDToPixelIDValue< VectorPixelID<uint8_t> >::Result, //< Multi-component of unsigned 8 bit integer
   sitkVectorInt8 = PixelIDToPixelIDValue< VectorPixelID<int8_t> >::Result, //< Multi-component of signed 8 bit integer
   sitkVectorUInt16 = PixelIDToPixelIDValue< VectorPixelID<uint16_t> >::Result, //< Multi-component of unsigned 16 bit integer

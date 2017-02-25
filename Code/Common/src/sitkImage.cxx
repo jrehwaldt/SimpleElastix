@@ -419,18 +419,6 @@ namespace itk
       return this->m_PimpleImage->GetPixelAsVectorFloat64( idx );
     }
 
-  std::complex<float>    Image::GetPixelAsComplexFloat32( const std::vector<uint32_t> &idx ) const
-    {
-      assert( m_PimpleImage );
-      return this->m_PimpleImage->GetPixelAsComplexFloat32( idx );
-    }
-
-    std::complex<double>   Image::GetPixelAsComplexFloat64(  const std::vector<uint32_t> &idx ) const
-    {
-      assert( m_PimpleImage );
-      return this->m_PimpleImage->GetPixelAsComplexFloat64( idx );
-    }
-
     int8_t *Image::GetBufferAsInt8( )
     {
       assert( m_PimpleImage );
@@ -699,20 +687,6 @@ namespace itk
       assert( m_PimpleImage );
       this->MakeUnique();
       this->m_PimpleImage->SetPixelAsVectorFloat64( idx, v );
-    }
-
-  void Image::SetPixelAsComplexFloat32( const std::vector<uint32_t> &idx, const std::complex<float> v )
-    {
-      assert( m_PimpleImage );
-      this->MakeUnique();
-      this->m_PimpleImage->SetPixelAsComplexFloat32( idx, v );
-    }
-
-    void Image::SetPixelAsComplexFloat64( const std::vector<uint32_t> &idx, const std::complex<double> v )
-    {
-      assert( m_PimpleImage );
-      this->MakeUnique();
-      this->m_PimpleImage->SetPixelAsComplexFloat64( idx, v );
     }
 
 

@@ -87,6 +87,7 @@ ExternalProject_Add(${proj}
   -DITK_WRAP_PYTHON:BOOL=${ITK_WRAPPING}
   # Modules required by SimpleITK
   -DModule_ITKCommon:BOOL=ON
+  -DModule_ITKColormap=ON
   -DModule_ITKDistanceMap:BOOL=ON
   -DModule_ITKIOGDCM:BOOL=ON
   -DModule_ITKIOImageBase:BOOL=ON

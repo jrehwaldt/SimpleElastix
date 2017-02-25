@@ -230,12 +230,6 @@ end)
 
 $(if not no_return_image then
 OUT=[[
-      if (Arrays.asList(labelIDs).contains(output.getPixelID()))
-        {
-          LabelMapToLabelImageFilter toImage = new LabelMapToLabelImageFilter();
-          output = toImage.execute(output);
-        }
-
       // Write output
       writer.setFileName( argv[argv.length - 1] );
       writer.execute( output );

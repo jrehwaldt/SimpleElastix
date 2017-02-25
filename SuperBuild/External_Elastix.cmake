@@ -32,9 +32,9 @@ ExternalProject_Add( ${proj}
   -C "${CMAKE_CURRENT_BINARY_DIR}/${proj}-build/CMakeCacheInit.txt"
   ${ep_common_args}
   -DCMAKE_POSITION_INDEPENDENT_CODE:BOOL=ON
-  -DELASTIX_BUILD_TESTING:BOOL=OFF
+  -DBUILD_TESTING:BOOL=OFF
   -DELASTIX_BUILD_EXECUTABLE:BOOL=OFF
-  -DELASTIX_BUILD_SHARED_LIBS:BOOL=${ELASTIX_BUILD_SHARED_LIBS}
+  -DBUILD_SHARED_LIBS:BOOL=${ELASTIX_BUILD_SHARED_LIBS}
   -DCMAKE_INSTALL_PREFIX:PATH=<INSTALL_DIR>
   -DITK_DIR:PATH=${ITK_DIR}
   -DELASTIX_IMAGE_2D_PIXELTYPES:STRING=float
@@ -113,7 +113,8 @@ ExternalProject_Add( ${proj}
   -DUSE_SimultaneousPerturbation:BOOL=OFF                                           
   -DUSE_SplineKernelTransform:BOOL=ON                                           
   -DUSE_StandardGradientDescent:BOOL=OFF                                           
-  -DUSE_StatisticalShapePenalty:BOOL=OFF                                           
+  -DUSE_StatisticalShapePenalty:BOOL=OFF
+  -DUSE_SumOfPairwiseCorrelationCoefficientsMetric:BOOL=OFF                                         
   -DUSE_TransformBendingEnergyPenanalty:BOOL=ON
   -DUSE_TransformRigidityPenalty:BOOL=ON                                           
   -DUSE_TranslationTransformElastix:BOOL=ON                                           

@@ -9,7 +9,6 @@ set ( SimpleITKExplicitSource
   sitkExplicitITKImageToImageFilter.cxx
   sitkExplicitITKImportImageContainer.cxx
   sitkExplicitITKInPlaceImageFilter.cxx
-  sitkExplicitITKLabelMap.cxx
   sitkExplicitITKVectorImage.cxx
   sitkExplicitITKVectorIndexSelectionCastImageFilter.cxx
   sitkExplicitITKImageConstIterator.cxx

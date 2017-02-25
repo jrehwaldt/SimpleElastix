@@ -27,25 +27,13 @@
 #include <sitkLabelStatisticsImageFilter.h>
 #include <sitkExtractImageFilter.h>
 #include <sitkJoinSeriesImageFilter.h>
-#include <sitkLabelMapContourOverlayImageFilter.h>
-#include <sitkMergeLabelMapFilter.h>
 #include <sitkCommand.h>
 
 #include "itkVectorImage.h"
 #include "itkVector.h"
 #include "itkExtractImageFilter.h"
-#include "itkLabelMapContourOverlayImageFilter.h"
-#include "itkMergeLabelMapFilter.h"
 
 #include "sitkShow.h"
-
-TEST(BasicFilters,MergeLabelMap_ENUMCHECK) {
-  typedef itk::MergeLabelMapFilter< itk::LabelMap< itk::LabelObject<int, 3> > >  ITKType;
-  EXPECT_EQ( (int)ITKType::KEEP, (int)itk::simple::MergeLabelMapFilter::Keep);
-  EXPECT_EQ( (int)ITKType::AGGREGATE, (int)itk::simple::MergeLabelMapFilter::Aggregate);
-  EXPECT_EQ( (int)ITKType::PACK, (int)itk::simple::MergeLabelMapFilter::Pack);
-  EXPECT_EQ( (int)ITKType::STRICT, (int)itk::simple::MergeLabelMapFilter::Strict);
-}
 
 TEST(BasicFilters,Extract_ENUMCHECK) {
   typedef itk::ExtractImageFilter< itk::Image<float,3>, itk::Image<float,3> > ITKExtractType;
@@ -54,18 +42,6 @@ TEST(BasicFilters,Extract_ENUMCHECK) {
   EXPECT_EQ( (int)ITKExtractType::DIRECTIONCOLLAPSETOSUBMATRIX, (int)itk::simple::ExtractImageFilter::DIRECTIONCOLLAPSETOSUBMATRIX );
   EXPECT_EQ( (int)ITKExtractType::DIRECTIONCOLLAPSETOGUESS, (int)itk::simple::ExtractImageFilter::DIRECTIONCOLLAPSETOGUESS );
 }
-TEST(BasicFilters,LabelMapContourOverlay_ENUMCHECK) {
-  typedef itk::LabelMapContourOverlayImageFilter< itk::LabelMap<itk::LabelObject<int,3> >, itk::Image<float,3>, itk::VectorImage<int,3> > ITKType;
-  EXPECT_EQ( (int) ITKType::PLAIN, (int)         itk::simple::LabelMapContourOverlayImageFilter::PLAIN );
-  EXPECT_EQ( (int) ITKType::CONTOUR, (int)       itk::simple::LabelMapContourOverlayImageFilter::CONTOUR );
-  EXPECT_EQ( (int) ITKType::SLICE_CONTOUR, (int) itk::simple::LabelMapContourOverlayImageFilter::SLICE_CONTOUR );
-
-
-  EXPECT_EQ( (int) ITKType::HIGH_LABEL_ON_TOP, (int) itk::simple::LabelMapContourOverlayImageFilter::HIGH_LABEL_ON_TOP );
-  EXPECT_EQ( (int) ITKType::LOW_LABEL_ON_TOP, (int) itk::simple::LabelMapContourOverlayImageFilter::LOW_LABEL_ON_TOP );
-
-}
-
 
 TEST(BasicFilters,ImageFilter) {
   namespace sitk = itk::simple;

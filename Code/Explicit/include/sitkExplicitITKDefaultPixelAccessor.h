@@ -42,8 +42,6 @@ extern template class SITKExplicit_EXPORT_EXPLICIT itk::DefaultPixelAccessor<lon
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::DefaultPixelAccessor<long long>;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::DefaultPixelAccessor<short>;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::DefaultPixelAccessor<signed char>;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::DefaultPixelAccessor<std::complex<double> >;
-extern template class SITKExplicit_EXPORT_EXPLICIT itk::DefaultPixelAccessor<std::complex<float> >;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::DefaultPixelAccessor<unsigned char>;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::DefaultPixelAccessor<unsigned int>;
 extern template class SITKExplicit_EXPORT_EXPLICIT itk::DefaultPixelAccessor<unsigned long>;
