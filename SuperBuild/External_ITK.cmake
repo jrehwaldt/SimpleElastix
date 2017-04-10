@@ -32,7 +32,7 @@ VariableListToArgs( ITK_VARS  ep_itk_args )
 
 
 set(proj ITK)  ## Use ITK convention of calling it ITK
-set(ITK_REPOSITORY "${git_protocol}://itk.org/ITK.git")
+set(ITK_REPOSITORY "${git_protocol}://github.com/jrehwaldt/ITK.git")
 
 set(ITK_USE_GIT_PROTOCOL 0)
 if("${git_protocol}" STREQUAL "git")
@@ -40,7 +40,7 @@ if("${git_protocol}" STREQUAL "git")
 endif()
 
 # NOTE: it is very important to update the ITK_DIR path with the ITK version
-set(ITK_TAG_COMMAND GIT_TAG 80178ae516db87aa50d2883c4e090da92c4a502d ) # just before 4.10.1 release
+set(ITK_TAG_COMMAND GIT_TAG v4_10_1_c057f30d ) # 4.10.1 release + 057f30d cherry picked
 
 if( ${ITK_WRAPPING} OR ${BUILD_SHARED_LIBS} )
   set( ITK_BUILD_SHARED_LIBS ON )
